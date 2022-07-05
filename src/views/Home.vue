@@ -1,13 +1,17 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <Checkbox />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Checkbox from '@/components/micro/Checkbox/Checkbox.vue'
 
 export default {
   // eslint-disable-next-line
   name: "Home",
-  components: {},
+  components: {
+    Checkbox
+  },
 };
 </script>
