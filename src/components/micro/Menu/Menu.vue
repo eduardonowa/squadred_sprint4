@@ -1,7 +1,7 @@
 <template>
   <nav class="menu">
     <div class="menu-tab">
-        <button class="basic" @click="loadBasicTab">Basic</button>
+        <button class="basic" @click="loadBasicTab" :disabled="!abledTabs.includes('Basic')">Basic</button>
     </div>
     <div class="menu-tab">
         <button class="social" @click="loadSocialTab" :disabled="!abledTabs.includes('Social')">Social</button>
@@ -35,6 +35,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+@import './Menu.scss';
 </style>
