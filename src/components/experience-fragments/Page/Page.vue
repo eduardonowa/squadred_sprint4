@@ -13,7 +13,7 @@
       </template>
 
       <template v-else-if="getActualTab === 'social'">
-        <p>SOCIAL</p>
+        <SocialTab />
       </template>
 
       <template v-else-if="getActualTab === 'certificates'">
@@ -28,7 +28,9 @@
 <script>
 import MenuComponent from '@/components/micro/Menu/Menu.vue';
 import { mapActions } from 'vuex';
+import SocialTab from '@/components/containers/SocialTab/SocialTab.vue'
 import HeaderForm from '@/components/containers/HeaderForm/HeaderForm.vue'
+
 export default {
   // eslint-disable-next-line
   name: "Page",
@@ -46,7 +48,8 @@ export default {
       return this.$store.state.actualTab;
     }
   },
-  components: { MenuComponent, HeaderForm },
+  components: { MenuComponent, SocialTab, HeaderForm  },
+
   methods: {
     ...mapActions(['ableTab', 'changeActualTab']),
     next() {
