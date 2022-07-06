@@ -1,5 +1,4 @@
 <template>
-<div>
     <nav class="menu">
       <div 
         class="menu-tab" 
@@ -22,21 +21,9 @@
             >
               {{ capitalize(tab) }}
           </button>
+          <span class="focus-border"></span>
       </div>
     </nav>
-
-    <template v-if="actualTab === 'basic'">
-        <p>BASIC</p>
-    </template>
-
-    <template v-else-if="actualTab === 'social'">
-        <p>SOCIAL</p>
-    </template>
-    <template v-else-if="actualTab === 'certificates'">
-        <p>CERTIFICATES</p>
-    </template>
-    <button @click="next">Next</button>
-</div>
 </template>
 
 <script>
@@ -46,15 +33,16 @@ export default {
     data() {
         return {
             abledTabs: this.$store.state.abledTabs,
-            actualTab: null
+            actualTab: this.$store.state.actualTab
         }
     },
-    mounted() {
-        this.loadTab(this.abledTabs[0]);
-        console.log(this.actualTab);
+    updated() {
+        this.abledTabs = this.$store.state.abledTabs;
+        this.actualTab = this.$store.state.actualTab;
+        this.loadTab(this.actualTab);
     },
     methods: {
-        ...mapActions(['ableTab']),
+        ...mapActions(['ableTab', 'changeActualTab']),
         focused(className) {
             this.abledTabs.forEach((tab) => {
                 const el = document.querySelector(`.${tab.toLowerCase()}`);
@@ -64,10 +52,9 @@ export default {
             el.classList.add('focus');
         },
         loadTab(tab) {
-            console.log(tab);
             this.focused(tab);
-            this.actualTab = tab;
-            this.abledTabs = this.$store.state.abledTabs;
+            this.changeActualTab(tab);
+            this.actualTab = this.$store.state.actualTab;
         },
         capitalize(word) {
             let letters = word.split('');
@@ -75,14 +62,6 @@ export default {
             letters.unshift(first.toUpperCase());
             return letters.join('');
         },
-        next() {
-            if (!(this.$store.state.menuTabs.indexOf(this.actualTab) + 1 === this.$store.state.menuTabs.length)) {
-                this.ableTab(this.$store.state.menuTabs[this.$store.state.menuTabs.indexOf(this.actualTab) + 1])
-                this.loadTab(this.$store.state.abledTabs[this.$store.state.abledTabs.length-1]);
-            } else {
-                console.log('última');
-            }
-        }
     }
 }
 </script>
