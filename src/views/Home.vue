@@ -1,13 +1,18 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <Page />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
+import Page from '@/components/experience-fragments/Page/Page.vue'
 export default {
   // eslint-disable-next-line
   name: "Home",
-  components: {},
+  components: {
+    Page
+  },
 };
 </script>
+
+<style lang="scss" scoped></style>
