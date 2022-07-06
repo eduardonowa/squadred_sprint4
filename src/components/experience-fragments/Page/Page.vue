@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <header class="header">
-        <HeaderForm />
+      <HeaderForm />
     </header>
 
     <div class="card">
@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import MenuComponent from '@/components/micro/Menu/Menu.vue';
-import { mapActions } from 'vuex';
-import SocialTab from '@/components/containers/SocialTab/SocialTab.vue'
-import HeaderForm from '@/components/containers/HeaderForm/HeaderForm.vue'
+import MenuComponent from "@/components/micro/Menu/Menu.vue";
+import { mapActions } from "vuex";
+import SocialTab from "@/components/containers/SocialTab/SocialTab.vue";
+import HeaderForm from "@/components/containers/HeaderForm/HeaderForm.vue";
 
 export default {
   // eslint-disable-next-line
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       actualTab: this.$store.state.actualTab,
-    }
+    };
   },
   beforeUpdate() {
     this.actualTab = this.$store.state.actualTab;
@@ -46,20 +46,31 @@ export default {
   computed: {
     getActualTab() {
       return this.$store.state.actualTab;
-    }
+    },
   },
-  components: { MenuComponent, SocialTab, HeaderForm  },
+  components: { MenuComponent, SocialTab, HeaderForm },
 
   methods: {
-    ...mapActions(['ableTab', 'changeActualTab']),
+    ...mapActions(["ableTab", "changeActualTab"]),
     next() {
-      if (!(this.$store.state.menuTabs.indexOf(this.actualTab) + 1 === this.$store.state.menuTabs.length)) {
-        this.ableTab(this.$store.state.menuTabs[this.$store.state.menuTabs.indexOf(this.actualTab) + 1]);
-        this.changeActualTab(this.$store.state.abledTabs[this.$store.state.abledTabs.length - 1]);
+      if (
+        !(
+          this.$store.state.menuTabs.indexOf(this.actualTab) + 1 ===
+          this.$store.state.menuTabs.length
+        )
+      ) {
+        this.ableTab(
+          this.$store.state.menuTabs[
+            this.$store.state.menuTabs.indexOf(this.actualTab) + 1
+          ]
+        );
+        this.changeActualTab(
+          this.$store.state.abledTabs[this.$store.state.abledTabs.length - 1]
+        );
         this.actualTab = this.$store.state.actualTab;
       }
     },
-  }
+  },
 };
 </script>
 
