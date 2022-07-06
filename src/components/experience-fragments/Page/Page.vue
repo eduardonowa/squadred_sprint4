@@ -1,6 +1,8 @@
 <template>
   <div class="page-container">
-    <header class="header"></header>
+    <header class="header">
+      <HeaderForm />
+    </header>
 
     <div class="card">
       <h2 class="teamSign">Team Sign Up</h2>
@@ -24,16 +26,19 @@
 </template>
 
 <script>
-import MenuComponent from '@/components/micro/Menu/Menu.vue';
-import { mapActions } from 'vuex';
-import SocialTab from '@/components/containers/SocialTab/SocialTab.vue'
+import MenuComponent from "@/components/micro/Menu/Menu.vue";
+import { mapActions } from "vuex";
+import SocialTab from "@/components/containers/SocialTab/SocialTab.vue";
+import HeaderForm from "@/components/containers/HeaderForm/HeaderForm.vue";
+
 export default {
   // eslint-disable-next-line
   name: "Page",
+
   data() {
     return {
       actualTab: this.$store.state.actualTab,
-    }
+    };
   },
   beforeUpdate() {
     this.actualTab = this.$store.state.actualTab;
@@ -41,19 +46,31 @@ export default {
   computed: {
     getActualTab() {
       return this.$store.state.actualTab;
-    }
+    },
   },
-  components: { MenuComponent, SocialTab },
+  components: { MenuComponent, SocialTab, HeaderForm },
+
   methods: {
-    ...mapActions(['ableTab', 'changeActualTab']),
+    ...mapActions(["ableTab", "changeActualTab"]),
     next() {
-      if (!(this.$store.state.menuTabs.indexOf(this.actualTab) + 1 === this.$store.state.menuTabs.length)) {
-        this.ableTab(this.$store.state.menuTabs[this.$store.state.menuTabs.indexOf(this.actualTab) + 1]);
-        this.changeActualTab(this.$store.state.abledTabs[this.$store.state.abledTabs.length - 1]);
+      if (
+        !(
+          this.$store.state.menuTabs.indexOf(this.actualTab) + 1 ===
+          this.$store.state.menuTabs.length
+        )
+      ) {
+        this.ableTab(
+          this.$store.state.menuTabs[
+            this.$store.state.menuTabs.indexOf(this.actualTab) + 1
+          ]
+        );
+        this.changeActualTab(
+          this.$store.state.abledTabs[this.$store.state.abledTabs.length - 1]
+        );
         this.actualTab = this.$store.state.actualTab;
       }
     },
-  }
+  },
 };
 </script>
 
