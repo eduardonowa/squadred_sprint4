@@ -1,16 +1,18 @@
 <template>
   <div class="home">
+    <Page />
   </div>
 </template>
 
 <script>
-import Checkbox from '@/components/micro/Checkbox/Checkbox.vue'
-
-
+import Page from '@/components/experience-fragments/Page/Page.vue'
 export default {
   // eslint-disable-next-line
-  name: 'Home',
+  name: "Home",
   components: {
-  }
+    Page
+  },
 };
 </script>
+
+<style lang="scss" scoped></style>
