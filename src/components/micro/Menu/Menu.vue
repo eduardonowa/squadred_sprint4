@@ -1,38 +1,42 @@
 <template>
-  <nav class="menu">
-    <div 
-      class="menu-tab" 
-      v-for="(tab, i) in $store.state.menuTabs"
-      :key="i"
-      >
-        <button 
-          v-if="i === 0" 
-          :class="tab + ' focus'" 
-          @click="loadTab(tab)" 
-          :disabled="!abledTabs.includes(tab)"
-          >
-            {{ capitalize(tab) }}
+<div>
+    <nav class="menu">
+      <div 
+        class="menu-tab" 
+        v-for="(tab, i) in $store.state.menuTabs"
+        :key="i"
+        >
+          <button 
+            v-if="i === 0" 
+            :class="tab + ' focus'" 
+            @click="loadTab(tab)" 
+            :disabled="!abledTabs.includes(tab)"
+            >
+              {{ capitalize(tab) }}
+            </button>
+          <button 
+            v-else 
+            :class="tab" 
+            @click="loadTab(tab)" 
+            :disabled="!abledTabs.includes(tab)"
+            >
+              {{ capitalize(tab) }}
           </button>
-        <button 
-          v-else 
-          :class="tab" 
-          @click="loadTab(tab)" 
-          :disabled="!abledTabs.includes(tab)"
-          >
-            {{ capitalize(tab) }}
-        </button>
-    </div>
+      </div>
+    </nav>
+
+    <template v-if="actualTab === 'basic'">
+        <p>BASIC</p>
+    </template>
+
+    <template v-else-if="actualTab === 'social'">
+        <p>SOCIAL</p>
+    </template>
+    <template v-else-if="actualTab === 'certificates'">
+        <p>CERTIFICATES</p>
+    </template>
     <button @click="next">Next</button>
-    <!-- <div class="menu-tab">
-        <button class="basic focus" @click="loadBasicTab" :disabled="!abledTabs.includes('Basic')">Basic</button>
-    </div>
-    <div class="menu-tab">
-        <button class="social" @click="loadSocialTab" :disabled="!abledTabs.includes('Social')">Social</button>
-    </div>
-    <div class="menu-tab">
-        <button class="certificates" @click="loadCertificatesTab" :disabled="!abledTabs.includes('Certificates')">Certificates</button>
-    </div> -->
-  </nav>
+</div>
 </template>
 
 <script>
@@ -45,29 +49,12 @@ export default {
             actualTab: null
         }
     },
-    // props: {
-    //     abledTabs: {
-    //         type: Array,
-    //         default: () => ['basic']
-    //     }
-    // },
     mounted() {
         this.loadTab(this.abledTabs[0]);
+        console.log(this.actualTab);
     },
     methods: {
         ...mapActions(['ableTab']),
-        // loadBasicTab() {
-        //     console.log('Basic');
-        //     this.focused('basic');
-        // },
-        // loadSocialTab() {
-        //     console.log('Social');
-        //     this.focused('social');
-        // },
-        // loadCertificatesTab() {
-        //     console.log('Certificates');
-        //     this.focused('certificates');
-        // },
         focused(className) {
             this.abledTabs.forEach((tab) => {
                 const el = document.querySelector(`.${tab.toLowerCase()}`);
@@ -80,9 +67,6 @@ export default {
             console.log(tab);
             this.focused(tab);
             this.actualTab = tab;
-            // console.log(this.$store.state.menuTabs.indexOf(tab));
-            // this.ableTab(this.$store.state.menuTabs[this.$store.state.menuTabs.indexOf(tab) + 1]);
-            console.log(this.$store.state.abledTabs);
             this.abledTabs = this.$store.state.abledTabs;
         },
         capitalize(word) {
@@ -94,6 +78,7 @@ export default {
         next() {
             if (!(this.$store.state.menuTabs.indexOf(this.actualTab) + 1 === this.$store.state.menuTabs.length)) {
                 this.ableTab(this.$store.state.menuTabs[this.$store.state.menuTabs.indexOf(this.actualTab) + 1])
+                this.loadTab(this.$store.state.abledTabs[this.$store.state.abledTabs.length-1]);
             } else {
                 console.log('última');
             }
