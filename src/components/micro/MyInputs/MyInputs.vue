@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <label :class="ClassLabel" >{{ LabelInput }} </label>
-    <span :id="idSpan" :class="ClassSpan" >{{ InvalidText }}</span>
+    <span :id="idSpan" :class="ClassSpan" > Please enter your{{ InvalidText }}</span>
     <input
       :type="Type"
       :class="ClassInput"
