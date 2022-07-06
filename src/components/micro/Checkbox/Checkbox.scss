@@ -1,0 +1,68 @@
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.terms {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.geekmark {
+  position: absolute;
+  top: 9px;
+  left: 5px;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: solid 2px #074ee8;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.terms input:checked ~ .geekmark {
+  background-color: #074ee8;
+}
+
+.geekmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.terms input:checked ~ .geekmark:after {
+  display: block;
+}
+
+.terms .geekmark:after {
+  left: 6px;
+  bottom: 3px;
+  width: 2.5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 4px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.box-terms label {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  color: #111111;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2em;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+#chkError {
+  font-size: 1em;
+  font-family: "Nunito", sans-serif;
+  color: red;
+  padding-left: 40px;
+}
+
+.box-terms {
+  display: flex;
+  align-items: flex-end;
+}
