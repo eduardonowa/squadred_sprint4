@@ -1,11 +1,10 @@
 <template>
   <div class="home">
-
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Checkbox from '@/components/micro/Checkbox/Checkbox.vue'
 
 
 export default {
@@ -14,3 +13,6 @@ export default {
   components: {
   }
 }
+};
+</script>
+
