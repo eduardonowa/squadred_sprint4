@@ -1,6 +1,8 @@
 <template>
   <div class="page-container">
-    <header class="header"></header>
+    <header class="header">
+        <HeaderForm />
+    </header>
 
     <div class="card">
       <h2 class="teamSign">Team Sign Up</h2>
@@ -26,9 +28,11 @@
 <script>
 import MenuComponent from '@/components/micro/Menu/Menu.vue';
 import { mapActions } from 'vuex';
+import HeaderForm from '@/components/containers/HeaderForm/HeaderForm.vue'
 export default {
   // eslint-disable-next-line
   name: "Page",
+
   data() {
     return {
       actualTab: this.$store.state.actualTab,
@@ -42,7 +46,7 @@ export default {
       return this.$store.state.actualTab;
     }
   },
-  components: { MenuComponent },
+  components: { MenuComponent, HeaderForm },
   methods: {
     ...mapActions(['ableTab', 'changeActualTab']),
     next() {
