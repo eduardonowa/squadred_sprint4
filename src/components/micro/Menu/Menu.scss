@@ -1,7 +1,8 @@
 .menu {
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     box-sizing: border-box;
@@ -21,14 +22,18 @@
             &:enabled:hover {
                 cursor: pointer;
             }
-            
-            &:focus {
-                color: #074EE8;
-                border-bottom: 3px solid #074EE8;
-            }
 
             &:disabled {
                 color: #111111;
+            }
+
+            &:disabled:hover {
+                cursor: not-allowed;
+            }
+
+            &.focus {
+                color: #074EE8;
+                border-bottom: 3px solid #074EE8;
             }
         }
         
