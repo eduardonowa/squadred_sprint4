@@ -27,7 +27,7 @@ export default {
     ClassInput: String,
     Placeholder: String,
     idInputs: String,
-    valueInput:String
+    valueInput:String,
   },
   methods: {
     ...mapActions(["setLinkedin", "setGithub"]),

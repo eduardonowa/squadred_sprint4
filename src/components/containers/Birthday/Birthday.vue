@@ -5,45 +5,43 @@
     <div class="inputs-container">
       <div class="select">
         <label>Day</label>
-        <select name="day" id="day">
-          <option @input="getDay" v-for="day in this.days" :key="day">
+        <select name="day" id="day" @change="getDay($event)">
+          <option v-for="day in this.days" :key="day">
             {{ day }}
           </option>
         </select>
       </div>
       <div class="select">
         <label>Month</label>
-        <select name="month" id="month">
+        <select name="month" id="month" @change="getMonth($event)">
           <option v-for="month in this.months" :key="month">{{ month }}</option>
         </select>
       </div>
       <div class="select">
         <label>Year</label>
-        <select name="year" id="year">
+        <select name="year" id="year" @change="getYear($event)">
           <option v-for="year in this.years" :key="year">{{ year }}</option>
         </select>
       </div>
       <div class="select">
-        <MyInputs LabelInput="Age" :valueInput="age" />
+        <label> Age </label>
+        <input type="text" disabled :value="age" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MyInputs from "@/components/micro/MyInputs/MyInputs.vue";
 import data from "./services";
 export default {
   // eslint-disable-next-line
   name: "Birthday",
-  components: {
-    MyInputs,
-  },
+  components: {},
   data() {
     return {
-      day: "",
-      month: "",
-      year: "",
+      day: "01",
+      month: "01",
+      year: "1900",
       days: data.daysMonth,
       months: data.monthsYear,
       years: data.yearsTot,
@@ -51,14 +49,19 @@ export default {
     };
   },
   methods: {
-    getDay() {
-      console.log(this.day);
+    getDay(event) {
+      this.day = event.target.value;
     },
-    getAge(){
-      let date = new Date()
-      let actualYear = date.getFullYear()
-      this.age = actualYear - this.year
-    }
+    getMonth(event) {
+      this.month = event.target.value;
+    },
+    getYear(event) {
+      this.year = event.target.value;
+      let date = new Date();
+      let actualYear = date.getFullYear();
+      this.age = actualYear - this.year;
+      this.$store.state.age = this.age;
+    },
   },
   mounted() {},
 };
