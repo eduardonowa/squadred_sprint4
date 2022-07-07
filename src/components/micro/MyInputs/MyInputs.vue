@@ -42,6 +42,6 @@ export default {
 };
 </script>
 
-<style>
+<style scooped>
 @import "./MyInputs.scss";
 </style>
