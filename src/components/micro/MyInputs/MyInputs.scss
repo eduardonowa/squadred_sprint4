@@ -8,10 +8,12 @@ label {
   margin-right: 2em;
 }
 
-.ClassSpan {
-  font-size: 1.2em;
-  color: #ff0000;
-  display: none;
+.form {
+  span{
+    font-size: 1.2em;
+    color: #ff0000;
+    display: none;
+  }
 }
 
 input {
