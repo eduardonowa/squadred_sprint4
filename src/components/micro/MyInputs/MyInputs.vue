@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div :class="ClassField">
     <label :class="ClassLabel">{{ LabelInput }} </label>
     <span :id="idSpan" :class="ClassSpan">{{ InvalidText }}</span>
 
@@ -18,6 +18,7 @@ import { mapActions } from "vuex";
 export default {
   name: "MyInputs",
   props: {
+    ClassField: String,
     idSpan: String,
     ClassSpan: String,
     InvalidText: String,
@@ -42,6 +43,6 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 @import "./MyInputs.scss";
 </style>
