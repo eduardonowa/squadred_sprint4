@@ -12,17 +12,15 @@
       idSpan="spanGit"
       Type="git"
     />
-  <Birthday />
   </div>
 </template>
 
 <script>
 import MyInputs from "@/components/micro/MyInputs/MyInputs.vue";
-import Birthday from '@/components/containers/Birthday/Birthday.vue'
 export default {
   name: "SocialTab",
   components: {
-    MyInputs, Birthday
+    MyInputs
   },
 };
 </script>

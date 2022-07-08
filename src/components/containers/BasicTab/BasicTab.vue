@@ -26,7 +26,7 @@
             Placeholder="(83) 00000-0000"
             Type="tel"
         />
-        BIRTHDAY *
+        <Birthday />
         <Checkbox />
     </div>
 </template>
@@ -34,8 +34,9 @@
 <script>
 import MyInputs from '@/components/micro/MyInputs/MyInputs.vue';
 import Checkbox from '@/components/micro/Checkbox/Checkbox.vue';
+import Birthday from '@/components/containers/Birthday/Birthday.vue';
 export default {
-    components: { MyInputs, Checkbox }
+    components: { MyInputs, Checkbox, Birthday }
 }
 </script>
 
