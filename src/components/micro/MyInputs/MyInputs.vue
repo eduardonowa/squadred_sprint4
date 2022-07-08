@@ -18,7 +18,10 @@ import { mapActions } from "vuex";
 export default {
   name: "MyInputs",
   props: {
-    ClassField: String,
+    ClassField: {
+      type: String,
+      default: "form"
+    },
     idSpan: String,
     ClassSpan: String,
     InvalidText: String,
@@ -30,13 +33,21 @@ export default {
     idInputs: String,
   },
   methods: {
-    ...mapActions(["setLinkedin", "setGithub"]),
+    ...mapActions(["setFullname", "setNickname", "setEmail", "setPhone", "setLinkedin", "setGithub"]),
 
     getValue(e) {
       if (this.Type === "linkedin") {
         this.setLinkedin(e.target.value);
       } else if (this.Type === "git") {
         this.setGithub(e.target.value);
+      } else if (this.ClassField === "full-name") {
+        this.setFullname(e.target.value);
+      } else if (this.ClassField === "nickname") {
+        this.setNickname(e.target.value);
+      } else if (this.ClassField === "email") {
+        this.setEmail(e.target.value);
+      } else if (this.ClassField === "phone") {
+        this.setPhone(e.target.value);
       }
     },
   },
