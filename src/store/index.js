@@ -57,16 +57,7 @@ export default new Vuex.Store({
     },
     setLinkedin(state, linkedin) {
       state.linkedin = linkedin;
-      if (
-        // eslint-disable-next-line
-        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
-          linkedin
-        )
-      ) {
-        window.localStorage.setItem("linkedin", linkedin);
-      } else {
-        window.localStorage.setItem("linkedin", "");
-      }
+      window.localStorage.setItem("linkedin", linkedin);
     },
     setGithub(state, github) {
       state.github = github;

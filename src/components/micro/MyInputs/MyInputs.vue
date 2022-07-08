@@ -1,7 +1,7 @@
 <template>
   <div :class="ClassField">
     <label :class="ClassLabel">{{ LabelInput }} </label>
-    <span :id="idSpan" :class="ClassSpan">{{ InvalidText }}</span>
+    <span :id="idSpan" class="ClassSpan">{{ InvalidText }}</span>
 
     <input
       :type="Type"
@@ -25,7 +25,6 @@ export default {
       default: "form"
     },
     idSpan: String,
-    ClassSpan: String,
     InvalidText: String,
     ClassLabel: String,
     LabelInput: String,
@@ -60,7 +59,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 @import "./MyInputs.scss";
 </style>
