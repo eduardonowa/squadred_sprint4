@@ -57,6 +57,7 @@ export default new Vuex.Store({
     },
     setCheckbox(state, checkbox) {
       state.checkbox = checkbox;
+      window.localStorage['terms'] = checkbox;
     },
     setLinkedin(state, linkedin) {
       state.linkedin = linkedin;
