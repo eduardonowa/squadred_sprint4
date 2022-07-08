@@ -9,6 +9,7 @@
       :placeholder="Placeholder"
       :id="idInputs"
       @input="getValue"
+      :value="valueInput"
     />
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
     ClassInput: String,
     Placeholder: String,
     idInputs: String,
+    valueInput:String,
   },
   mounted() {
     if (this.ClassField === "phone") {

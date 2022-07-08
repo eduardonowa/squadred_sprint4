@@ -17,6 +17,10 @@ export default new Vuex.Store({
     age: "",
     linkedin: "",
     github: "",
+    day: "",
+    month: "",
+    year: "",
+    age: "",
   },
   getters: {},
   mutations: {

@@ -1,0 +1,44 @@
+.birthday-container {
+  span {
+    font-size: 1.2em;
+    color: #ff0000;
+    display: none;
+  }
+  .inputs-container {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+    .select {
+      padding-bottom: 5px;
+      display: flex;
+      flex-flow: column nowrap;
+      width: 22%;
+      label {
+        font-size: 1em;
+      }
+      @media (max-width: 768px) {
+        width: 45%;
+      }
+    }
+  }
+}
+select {
+  border: 2px solid #aaaaaa;
+  border-radius: 4px;
+  width: 100%;
+  height: 2.5em;
+  background: transparent;
+  color: #767676;
+  font-size: 1em;
+  padding-left: 10px;
+  margin-top: 5px;
+  text-align: left;
+  margin-top: 3px;
+  &:focus {
+    outline: 0;
+  }
+}
