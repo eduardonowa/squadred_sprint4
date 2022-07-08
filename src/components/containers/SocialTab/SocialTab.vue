@@ -4,6 +4,7 @@
       LabelInput="Linkedin"
       Placeholder="https://www.linkedin.com/in/foo-bar-3a0560104/"
       Type="linkedin"
+      ClassInput="linkedin"
     />
     <MyInputs
       LabelInput="GitHub *"
@@ -11,6 +12,7 @@
       Placeholder="https://github.com/foobar"
       idSpan="spanGit"
       Type="git"
+      ClassInput="git"
     />
   </div>
 </template>
