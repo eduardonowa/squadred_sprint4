@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div :class="ClassField">
     <label :class="ClassLabel">{{ LabelInput }} </label>
     <span :id="idSpan" class="ClassSpan">{{ InvalidText }}</span>
 
@@ -15,9 +15,15 @@
 
 <script>
 import { mapActions } from "vuex";
+import $ from 'jquery';
+import {} from 'jquery-mask-plugin';
 export default {
   name: "MyInputs",
   props: {
+    ClassField: {
+      type: String,
+      default: "form"
+    },
     idSpan: String,
     InvalidText: String,
     ClassLabel: String,
@@ -27,20 +33,32 @@ export default {
     Placeholder: String,
     idInputs: String,
   },
+  mounted() {
+    if (this.ClassField === "phone") {
+      $(`.${this.ClassField} input`).mask('(00) 00000-0000');
+    }
+  },
   methods: {
-    ...mapActions(["setLinkedin", "setGithub"]),
+    ...mapActions(["setFullname", "setNickname", "setEmail", "setPhone", "setLinkedin", "setGithub"]),
 
     getValue(e) {
       if (this.Type === "linkedin") {
         this.setLinkedin(e.target.value);
       } else if (this.Type === "git") {
         this.setGithub(e.target.value);
+      } else if (this.ClassField === "full-name") {
+        this.setFullname(e.target.value);
+      } else if (this.ClassField === "nickname") {
+        this.setNickname(e.target.value);
+      } else if (this.ClassField === "email") {
+        this.setEmail(e.target.value);
+      } else if (this.ClassField === "phone") {
+        this.setPhone(e.target.value);
       }
     },
   },
 };
 </script>
-
-<style scooped lang="scss">
+<style lang="scss" scoped>
 @import "./MyInputs.scss";
 </style>

@@ -1,0 +1,44 @@
+.basic-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+
+    .full-name,
+    .nickname,
+    .email,
+    .phone {
+        margin-bottom: 1em;
+    }
+
+    .full-name {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nickname {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .email {
+        width: 65%;
+        padding-right: 10px;
+        box-sizing: border-box;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    .phone {
+        width: 35%;
+        padding-left: 5px;
+        box-sizing: border-box;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            padding: 0;
+        }
+    }
+}

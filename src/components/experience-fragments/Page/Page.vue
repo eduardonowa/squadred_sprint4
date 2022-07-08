@@ -9,7 +9,7 @@
       <MenuComponent />
 
       <template v-if="getActualTab === 'basic'">
-        <p>BASIC</p>
+        <BasicTab />
       </template>
 
       <template v-else-if="getActualTab === 'social'">
@@ -30,6 +30,7 @@ import MenuComponent from "@/components/micro/Menu/Menu.vue";
 import { mapActions } from "vuex";
 import SocialTab from "@/components/containers/SocialTab/SocialTab.vue";
 import HeaderForm from "@/components/containers/HeaderForm/HeaderForm.vue";
+import BasicTab from "@/components/containers/BasicTab/BasicTab.vue";
 
 export default {
   // eslint-disable-next-line
@@ -48,7 +49,7 @@ export default {
       return this.$store.state.actualTab;
     },
   },
-  components: { MenuComponent, SocialTab, HeaderForm },
+  components: { MenuComponent, SocialTab, HeaderForm, BasicTab },
 
   methods: {
     ...mapActions(["ableTab", "changeActualTab"]),
