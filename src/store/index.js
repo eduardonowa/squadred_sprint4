@@ -20,7 +20,6 @@ export default new Vuex.Store({
     day: "",
     month: "",
     year: "",
-    age: "",
   },
   getters: {},
   mutations: {
