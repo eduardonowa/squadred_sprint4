@@ -84,7 +84,9 @@ export default {
       return String(date).padStart(2, "0");
     },
   },
-  mounted() {},
+  mounted() {
+    this.age = window.localStorage['age'];
+  },
 };
 </script>
 
