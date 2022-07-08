@@ -1,6 +1,6 @@
 <template>
   <div class="birthday-container">
-    <label>Birthday *</label>
+    <label class="title">Birthday *</label>
     <span>Please enter your Age</span>
     <div class="inputs-container">
       <div class="select">
@@ -87,6 +87,9 @@ export default {
   },
   mounted() {
     this.getActualYear();
+  },
+  mounted() {
+    this.age = window.localStorage['age'];
   },
 };
 </script>

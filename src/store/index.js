@@ -9,30 +9,59 @@ export default new Vuex.Store({
     abledTabs: ["basic"],
     actualTab: "basic",
     checkbox: "",
+    fullname: "",
+    nickname: "",
+    email: "",
+    phone: "",
+    birthday: "",
+    age: "",
     linkedin: "",
     github: "",
     day: "",
     month: "",
     year: "",
-    age: "",
   },
   getters: {},
   mutations: {
+    setFullname(state, name) {
+      if (/^[A-Z]{1}[a-z]+( [a-zA-Z'"-]+)+$/.test(name)) {
+        state.fullname = name;
+        window.localStorage.setItem("fullname", name);
+      } else {
+        window.localStorage.setItem("fullname", "");
+      }
+    },
+    setNickname(state, nickname) {
+      if (/^.\S+$/.test(nickname)) {
+        state.nickname = nickname;
+        window.localStorage.setItem("nickname", nickname);
+      } else {
+        window.localStorage.setItem("nickname", "");
+      }
+    },
+    setEmail(state, email) {
+      if (/^[^@ \n\r\t]+@[^@ \n\r\t]+\.[^@ \n\r\t]+$/.test(email)) {
+        state.email = email;
+        window.localStorage.setItem("email", email);
+      } else {
+        window.localStorage.setItem("email", "");
+      }
+    },
+    setPhone(state, phone) {
+      if (/^\(\d{2}\)\s\d{5}-\d{4}$/.test(phone)) {
+        state.phone = phone;
+        window.localStorage.setItem("phone", phone);
+      } else {
+        window.localStorage.setItem("phone", "");
+      }
+    },
     setCheckbox(state, checkbox) {
       state.checkbox = checkbox;
+      window.localStorage['terms'] = checkbox;
     },
     setLinkedin(state, linkedin) {
       state.linkedin = linkedin;
-      if (
-        // eslint-disable-next-line
-        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
-          linkedin
-        )
-      ) {
-        window.localStorage.setItem("linkedin", linkedin);
-      } else {
-        window.localStorage.setItem("linkedin", "");
-      }
+      window.localStorage.setItem("linkedin", linkedin);
     },
     setGithub(state, github) {
       state.github = github;
@@ -55,6 +84,18 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    setFullname({ commit }, name) {
+      commit("setFullname", name);
+    },
+    setNickname({ commit }, nickname) {
+      commit("setNickname", nickname);
+    },
+    setEmail({ commit }, email) {
+      commit("setEmail", email);
+    },
+    setPhone({ commit }, phone) {
+      commit("setPhone", phone);
+    },
     setCheckbox({ commit }, checkbox) {
       commit("setCheckbox", checkbox);
     },

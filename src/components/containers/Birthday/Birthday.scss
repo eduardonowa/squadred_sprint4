@@ -1,11 +1,17 @@
 .birthday-container {
+  font-family: "Nunito", sans-serif;
+  width: 100%;
+  .title {
+    color: #767676;
+    font-size: 1.2em;
+  }
   span {
     font-size: 1.2em;
     color: #ff0000;
     display: none;
   }
   .inputs-container {
-    padding-top: 10px;
+    padding-top: 8px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -18,6 +24,9 @@
       flex-flow: column nowrap;
       width: 22%;
       label {
+        color: #767676;
+        margin-right: 2em;
+
         font-size: 1em;
       }
       @media (max-width: 768px) {
