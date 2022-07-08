@@ -7,7 +7,7 @@
         class="chk"
         id="checkbox"
         required
-        @input="getValue"
+        @change="getValue"
       />
       <span class="geekmark"></span>
       <span class="label-text">I accept the terms and privacy</span>
@@ -25,6 +25,7 @@ export default {
     ...mapActions(["setCheckbox"]),
 
     getValue(e) {
+      console.log(e.target);
       if (e.target.checked) {
         this.setCheckbox(true);
       } else {
