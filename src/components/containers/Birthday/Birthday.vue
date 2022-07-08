@@ -6,7 +6,7 @@
       <div class="select">
         <label>Day</label>
         <select name="day" id="day" @change="getDay($event)">
-          <option v-for="day in this.days" :key="day">
+          <option v-for="day in 31" :key="day">
             {{ padStart(day) }}
           </option>
         </select>
@@ -14,7 +14,7 @@
       <div class="select">
         <label>Month</label>
         <select name="month" id="month" @change="getMonth($event)">
-          <option v-for="month in this.months" :key="month">
+          <option v-for="month in 12" :key="month">
             {{ padStart(month) }}
           </option>
         </select>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import data from "./services";
+import yearsTot from "./services";
 export default {
   // eslint-disable-next-line
   name: "Birthday",
@@ -46,20 +46,17 @@ export default {
       day: "",
       month: "",
       year: "",
-      days: data.daysMonth,
-      months: data.monthsYear,
-      years: data.yearsTot,
+      years: yearsTot,
       age: "",
+      actualYear: "",
     };
   },
   methods: {
     getDay(event) {
       this.day = event.target.value;
-
     },
     getMonth(event) {
       this.month = event.target.value;
-
     },
     getYear(event) {
       this.year = event.target.value;
@@ -77,7 +74,7 @@ export default {
         actualYear = actualYear - 1;
       }
       this.age = actualYear - this.year;
-      window.localStorage.setItem('age', this.age)
+      window.localStorage.setItem("age", this.age);
       console.log(this.age);
     },
     padStart(date) {
