@@ -55,9 +55,11 @@ export default {
   methods: {
     getDay(event) {
       this.day = event.target.value;
+
     },
     getMonth(event) {
       this.month = event.target.value;
+
     },
     getYear(event) {
       this.year = event.target.value;
@@ -75,6 +77,7 @@ export default {
         actualYear = actualYear - 1;
       }
       this.age = actualYear - this.year;
+      window.localStorage.setItem('age', this.age)
       console.log(this.age);
     },
     padStart(date) {
