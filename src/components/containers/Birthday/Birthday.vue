@@ -29,7 +29,7 @@
       </div>
       <div class="select">
         <label> Age </label>
-        <input type="text" disabled :value="age" />
+        <input class="age" type="text" disabled :value="age" />
       </div>
     </div>
   </div>

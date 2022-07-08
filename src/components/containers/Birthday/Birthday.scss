@@ -23,6 +23,18 @@
       @media (max-width: 768px) {
         width: 45%;
       }
+      .age {
+        display: flex;
+        border: 2px solid #aaaaaa;
+        border-radius: 4px;
+        width: 100%;
+        height: 2.5em;
+        background: transparent;
+        color: #767676;
+        font-size: 1em;
+        padding-left: 10px;
+        margin-top: 5px;
+      }
     }
   }
 }
