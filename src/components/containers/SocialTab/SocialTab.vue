@@ -14,15 +14,26 @@
       Type="git"
       ClassInput="git"
     />
+
+    <div class="button">
+      <Button type="1" msg="Next" :event="verify" />
+    </div>
   </div>
 </template>
 
 <script>
 import MyInputs from "@/components/micro/MyInputs/MyInputs.vue";
+import Button from "@/components/micro/Button/Button.vue";
 export default {
   name: "SocialTab",
   components: {
     MyInputs,
+    Button,
+  },
+  methods: {
+    verify() {
+      console.log("verify");
+    },
   },
 };
 </script>
