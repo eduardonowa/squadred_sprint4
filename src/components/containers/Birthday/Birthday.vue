@@ -22,8 +22,8 @@
       <div class="select">
         <label>Year</label>
         <select name="year" id="year" @change="getYear($event)">
-          <option v-for="year in this.years" :key="year">
-            {{ year }}
+          <option v-for="year in this.rangeYears" :key="year">
+            {{ year + 1900 }}
           </option>
         </select>
       </div>
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import yearsTot from "./services";
 export default {
   // eslint-disable-next-line
   name: "Birthday",
@@ -46,9 +45,9 @@ export default {
       day: "",
       month: "",
       year: "",
-      years: yearsTot,
       age: "",
       actualYear: "",
+      rangeYears: "",
     };
   },
   methods: {
@@ -63,7 +62,7 @@ export default {
       let date = new Date();
       let actualDay = date.getDate();
       let actualMonth = 1 + date.getMonth();
-      let actualYear = date.getUTCFullYear();
+      this.actualYear = date.getUTCFullYear();
       let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
       if (this.day > actualDay) {
         actualDay = actualDay + month[actualMonth - 1];
@@ -71,17 +70,24 @@ export default {
       }
       if (this.month > actualMonth) {
         actualMonth = actualMonth + 12;
-        actualYear = actualYear - 1;
+        this.actualYear = this.actualYear - 1;
       }
-      this.age = actualYear - this.year;
+      this.age = this.actualYear - this.year;
       window.localStorage.setItem("age", this.age);
       console.log(this.age);
     },
     padStart(date) {
       return String(date).padStart(2, "0");
     },
+
+    getActualYear() {
+      let date = new Date();
+      this.rangeYears = date.getFullYear() - 1900;
+    },
   },
-  mounted() {},
+  mounted() {
+    this.getActualYear();
+  },
 };
 </script>
 
