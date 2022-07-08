@@ -25,6 +25,14 @@
       <img src="@/assets/plus.png" class="img2" alt="plus image" />{{ msg }}
       <img src="@/assets/next.png" class="img0" alt="next image" />
     </button>
+    <button
+      class="classButton"
+      v-else-if="type === '3'"
+      id="button3"
+      @click.prevent="event"
+    >
+      {{ msg }}<img src="@/assets/vector.png" class="img3" alt="vector image" />
+    </button>
   </div>
 </template>
 
