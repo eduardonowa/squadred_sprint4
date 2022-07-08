@@ -15,6 +15,8 @@
 
 <script>
 import { mapActions } from "vuex";
+import $ from 'jquery';
+import {} from 'jquery-mask-plugin';
 export default {
   name: "MyInputs",
   props: {
@@ -31,6 +33,11 @@ export default {
     ClassInput: String,
     Placeholder: String,
     idInputs: String,
+  },
+  mounted() {
+    if (this.ClassField === "phone") {
+      $(`.${this.ClassField} input`).mask('(00) 00000-0000');
+    }
   },
   methods: {
     ...mapActions(["setFullname", "setNickname", "setEmail", "setPhone", "setLinkedin", "setGithub"]),
