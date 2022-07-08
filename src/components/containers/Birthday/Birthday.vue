@@ -7,20 +7,24 @@
         <label>Day</label>
         <select name="day" id="day" @change="getDay($event)">
           <option v-for="day in this.days" :key="day">
-            {{ day }}
+            {{ padStart(day) }}
           </option>
         </select>
       </div>
       <div class="select">
         <label>Month</label>
         <select name="month" id="month" @change="getMonth($event)">
-          <option v-for="month in this.months" :key="month">{{ month }}</option>
+          <option v-for="month in this.months" :key="month">
+            {{ padStart(month) }}
+          </option>
         </select>
       </div>
       <div class="select">
         <label>Year</label>
         <select name="year" id="year" @change="getYear($event)">
-          <option v-for="year in this.years" :key="year">{{ year }}</option>
+          <option v-for="year in this.years" :key="year">
+            {{ year }}
+          </option>
         </select>
       </div>
       <div class="select">
@@ -39,9 +43,9 @@ export default {
   components: {},
   data() {
     return {
-      day: "01",
-      month: "01",
-      year: "1900",
+      day: "",
+      month: "",
+      year: "",
       days: data.daysMonth,
       months: data.monthsYear,
       years: data.yearsTot,
@@ -58,9 +62,23 @@ export default {
     getYear(event) {
       this.year = event.target.value;
       let date = new Date();
-      let actualYear = date.getFullYear();
+      let actualDay = date.getDate();
+      let actualMonth = 1 + date.getMonth();
+      let actualYear = date.getUTCFullYear();
+      let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      if (this.day > actualDay) {
+        actualDay = actualDay + month[actualMonth - 1];
+        actualMonth = actualMonth - 1;
+      }
+      if (this.month > actualMonth) {
+        actualMonth = actualMonth + 12;
+        actualYear = actualYear - 1;
+      }
       this.age = actualYear - this.year;
-      this.$store.state.age = this.age;
+      console.log(this.age);
+    },
+    padStart(date) {
+      return String(date).padStart(2, "0");
     },
   },
   mounted() {},
