@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import MyInputs from "@/components/micro/MyInputs/MyInputs.vue";
+import MyInputs from "@/components/MyInputs/MyInputs.vue";
 export default {
   name: "SocialTab",
   components: {
@@ -26,5 +26,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./SocialTab.scss";
+@import "./Social.scss";
 </style>

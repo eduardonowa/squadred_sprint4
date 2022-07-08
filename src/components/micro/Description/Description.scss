@@ -1,13 +1,14 @@
-.containerTitle {
+.container-description {
   font-family: "Inter", sans-serif;
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
 
-  .title {
-    font-size: 3em;
+  .description {
+    font-size: 1.3em;
     margin: 0;
-    color: #074ee8;
-    font-weight: 700;
+    color: #111111;
+    font-weight: 400;
+    padding-left: 2px;
   }
 }

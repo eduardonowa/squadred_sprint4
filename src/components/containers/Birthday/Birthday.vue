@@ -87,9 +87,7 @@ export default {
   },
   mounted() {
     this.getActualYear();
-  },
-  mounted() {
-    this.age = window.localStorage['age'];
+    this.age = window.localStorage["age"];
   },
 };
 </script>

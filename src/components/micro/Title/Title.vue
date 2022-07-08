@@ -1,7 +1,6 @@
 <template>
   <div class="containerTitle">
-    <h3 class="type">{{ type }}</h3>
-    <h1 class="description">{{ tabNumber }} Tab</h1>
+    <h1 class="title">{{ tabNumber }} Tab</h1>
   </div>
 </template>
 

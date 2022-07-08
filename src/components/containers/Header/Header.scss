@@ -1,0 +1,13 @@
+.header-container {
+  background: #e5e5e5;
+  width: 100%;
+  padding: 30px 0px 30px 100px;
+  border-bottom: 2px solid #aaaaaa;
+  text-align: left;
+  @media (max-width: 768px) {
+    border-bottom: none;
+  }
+  @media (max-width: 600px) {
+    padding-left: 50px;
+  }
+}
