@@ -1,40 +1,34 @@
 <template>
-  <div class="page-container">
-    <header class="header">
-      <HeaderForm />
-    </header>
+  <div class="card">
+    <h2 class="teamSign">Team Sign Up</h2>
+    <MenuComponent />
 
-    <div class="card">
-      <h2 class="teamSign">Team Sign Up</h2>
-      <MenuComponent />
+    <template v-if="getActualTab === 'basic'">
+      <Basic />
+    </template>
 
-      <template v-if="getActualTab === 'basic'">
-        <BasicTab />
-      </template>
+    <template v-else-if="getActualTab === 'social'">
+      <Social />
+    </template>
 
-      <template v-else-if="getActualTab === 'social'">
-        <SocialTab />
-      </template>
+    <template v-else-if="getActualTab === 'certificates'">
+      <Certificates />
+    </template>
 
-      <template v-else-if="getActualTab === 'certificates'">
-        <p>CERTIFICATES</p>
-      </template>
-
-      <button @click.prevent="next">Next</button>
-    </div>
+    <button @click.prevent="next">Next</button>
   </div>
 </template>
 
 <script>
-import MenuComponent from "@/components/micro/Menu/Menu.vue";
+import MenuComponent from "@/components/Menu/Menu.vue";
 import { mapActions } from "vuex";
-import SocialTab from "@/components/containers/SocialTab/SocialTab.vue";
-import HeaderForm from "@/components/containers/HeaderForm/HeaderForm.vue";
-import BasicTab from "@/components/containers/BasicTab/BasicTab.vue";
+import Social from "@/components/containers/Tabs/Social/Social.vue";
+import Basic from "@/components/containers/Tabs/Basic/Basic.vue";
+import Certificates from "@/components/containers/Tabs/Certificates/Certificates.vue";
 
 export default {
   // eslint-disable-next-line
-  name: "Page",
+  name: "Tabs",
 
   data() {
     return {
@@ -49,7 +43,7 @@ export default {
       return this.$store.state.actualTab;
     },
   },
-  components: { MenuComponent, SocialTab, HeaderForm, BasicTab },
+  components: { MenuComponent, Social, Basic, Certificates },
 
   methods: {
     ...mapActions(["ableTab", "changeActualTab"]),
@@ -76,5 +70,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./Page.scss";
+@import "./Tabs.scss";
 </style>

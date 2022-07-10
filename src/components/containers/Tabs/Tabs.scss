@@ -1,0 +1,19 @@
+.card {
+  padding: 20px 40px;
+  margin: 50px auto;
+  width: 600px;
+  min-height: 700px;
+  background: white;
+  border-radius: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .teamSign {
+    padding-top: 45px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 1.125em;
+  }
+}

@@ -5,6 +5,7 @@
       Placeholder="https://www.linkedin.com/in/foo-bar-3a0560104/"
       Type="linkedin"
       ClassInput="linkedin"
+      :valueInput="linkedinValue"
     />
     <MyInputs
       LabelInput="GitHub *"
@@ -13,6 +14,7 @@
       idSpan="spanGit"
       Type="git"
       ClassInput="git"
+      :valueInput="githubValue"
     />
 
     <div class="button">
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-import MyInputs from "@/components/micro/MyInputs/MyInputs.vue";
+import MyInputs from "@/components/MyInputs/MyInputs.vue";
 import Button from "@/components/micro/Button/Button.vue";
 export default {
   name: "SocialTab",
@@ -30,14 +32,28 @@ export default {
     MyInputs,
     Button,
   },
+  data() {
+    return {
+      linkedinValue: "",
+      githubValue: "",
+    };
+  },
   methods: {
     verify() {
-      console.log("verify");
+      if (localStorage.getItem("github")) {
+        console.log("ok");
+      } else {
+        console.log("not ok");
+      }
     },
+  },
+  mounted() {
+    this.linkedinValue = localStorage.getItem("linkedin");
+    this.githubValue = localStorage.getItem("github");
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "./SocialTab.scss";
+@import "./Social.scss";
 </style>

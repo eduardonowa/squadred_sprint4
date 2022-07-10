@@ -9,6 +9,7 @@
       :placeholder="Placeholder"
       :id="idInputs"
       @input="getValue"
+      :value="valueInput"
     />
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
     ClassInput: String,
     Placeholder: String,
     idInputs: String,
+    valueInput:String,
   },
   mounted() {
     if (this.ClassField === "phone") {
@@ -39,7 +41,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["setFullname", "setNickname", "setEmail", "setPhone", "setLinkedin", "setGithub"]),
+    ...mapActions(["setFullname", "setNickname", "setEmail", "setPhone", "setLinkedin", "setGithub", "setCertificates", "setTeamName", "setInstitution", "setGraduation"]),
 
     getValue(e) {
       if (this.Type === "linkedin") {
@@ -54,7 +56,16 @@ export default {
         this.setEmail(e.target.value);
       } else if (this.ClassField === "phone") {
         this.setPhone(e.target.value);
+      } else if (this.ClassField === "certificates") {
+        this.setCertificates(e.target.value);
+      } else if (this.ClassField === "team-name") {
+        this.setTeamName(e.target.value);
+      } else if (this.ClassField === "institution") {
+        this.setInstitution(e.target.value);
+      } else if (this.ClassField === "graduation") {
+        this.setGraduation(e.target.value); 
       }
+      
     },
   },
 };

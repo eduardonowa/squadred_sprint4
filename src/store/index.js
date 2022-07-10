@@ -17,6 +17,9 @@ export default new Vuex.Store({
     age: "",
     linkedin: "",
     github: "",
+    day: "",
+    month: "",
+    year: "",
   },
   getters: {},
   mutations: {
@@ -54,6 +57,7 @@ export default new Vuex.Store({
     },
     setCheckbox(state, checkbox) {
       state.checkbox = checkbox;
+      window.localStorage['terms'] = checkbox;
     },
     setLinkedin(state, linkedin) {
       state.linkedin = linkedin;
