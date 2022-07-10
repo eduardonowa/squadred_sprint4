@@ -9,6 +9,9 @@
 export default {
   // eslint-disable-next-line
   name: "Error404",
+  mounted() {
+    document.title = `${process.env.VUE_APP_TITLE} | Error404`
+  },
 };
 </script>
 

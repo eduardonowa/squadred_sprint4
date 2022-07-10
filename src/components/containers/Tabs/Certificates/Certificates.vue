@@ -46,6 +46,10 @@ export default {
     MyInputs,
     Button,
   },
+  mounted(){
+    document.title = `${process.env.VUE_APP_TITLE} | Certificates`
+
+  }
 };
 </script>
 

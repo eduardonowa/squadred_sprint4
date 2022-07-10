@@ -20,7 +20,10 @@ import MyInputs from "@/components/MyInputs/MyInputs.vue";
 export default {
   name: "SocialTab",
   components: {
-    MyInputs
+    MyInputs,
+  },
+  mounted() {
+    document.title = `${process.env.VUE_APP_TITLE} | Social`;
   },
 };
 </script>
