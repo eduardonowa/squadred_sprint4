@@ -6,6 +6,7 @@
       <div class="select">
         <label>Day</label>
         <select name="day" id="day" @change="getDay($event)">
+          <option>Day</option>
           <option v-for="day in 31" :key="day">
             {{ padStart(day) }}
           </option>
@@ -14,6 +15,7 @@
       <div class="select">
         <label>Month</label>
         <select name="month" id="month" @change="getMonth($event)">
+          <option>Month</option>
           <option v-for="month in 12" :key="month">
             {{ padStart(month) }}
           </option>
@@ -22,6 +24,7 @@
       <div class="select">
         <label>Year</label>
         <select name="year" id="year" @change="getYear($event)">
+          <option>Year</option>
           <option v-for="year in this.rangeYears" :key="year">
             {{ year + 1900 }}
           </option>
@@ -74,7 +77,6 @@ export default {
       }
       this.age = this.actualYear - this.year;
       window.localStorage.setItem("age", this.age);
-      console.log(this.age);
     },
     padStart(date) {
       return String(date).padStart(2, "0");
