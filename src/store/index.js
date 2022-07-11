@@ -57,11 +57,20 @@ export default new Vuex.Store({
     },
     setCheckbox(state, checkbox) {
       state.checkbox = checkbox;
-      window.localStorage['terms'] = checkbox;
+      window.localStorage["terms"] = checkbox;
     },
     setLinkedin(state, linkedin) {
       state.linkedin = linkedin;
-      window.localStorage.setItem("linkedin", linkedin);
+      if (
+        // eslint-disable-next-line
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+          linkedin
+        )
+      ) {
+        window.localStorage.setItem("linkedin", linkedin);
+      } else {
+        window.localStorage.setItem("linkedin", "");
+      }
     },
     setGithub(state, github) {
       state.github = github;
@@ -72,7 +81,9 @@ export default new Vuex.Store({
         )
       ) {
         window.localStorage.setItem("github", github);
+        document.getElementById("spanGit").style.visibility = "hidden";
       } else {
+        document.getElementById("spanGit").style.visibility = "visible";
         window.localStorage.setItem("github", "");
       }
     },
