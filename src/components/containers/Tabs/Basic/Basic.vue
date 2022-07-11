@@ -55,6 +55,8 @@ export default {
     };
   },
   mounted() {
+    document.title = `${process.env.VUE_APP_TITLE} | Basic`;
+
     this.fullnameValue = window.localStorage["fullname"];
     this.nicknameValue = window.localStorage["nickname"];
     this.emailValue = window.localStorage["email"];
@@ -76,7 +78,7 @@ export default {
         this.next();
       }
     },
-    next() {
+     next() {
       if (
         !(
           this.$store.state.menuTabs.indexOf(this.$store.state.actualTab) +

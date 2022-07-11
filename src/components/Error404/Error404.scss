@@ -1,0 +1,20 @@
+.erro404 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 5px;
+  font-family: "Nunito", sans-serif;
+
+  .errorgif {
+    @media (max-width: 580px) {
+      width: 99%;
+    }
+  }
+  h2 {
+    text-align: center;
+    color: #00240b;
+  }
+}
