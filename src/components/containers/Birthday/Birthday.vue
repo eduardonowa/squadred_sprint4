@@ -87,6 +87,12 @@ export default {
       this.rangeYears = date.getFullYear() - 1900;
     },
   },
+  updated() {
+    window.localStorage.setItem(
+      "Birthday",
+      `${this.day}/${this.month}/${this.year}`
+    );
+  },
   mounted() {
     this.getActualYear();
     this.age = window.localStorage["age"];
