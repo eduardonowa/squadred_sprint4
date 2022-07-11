@@ -55,6 +55,8 @@ export default {
     };
   },
   mounted() {
+    document.title = `${process.env.VUE_APP_TITLE} | Basic`;
+
     this.fullnameValue = window.localStorage["fullname"];
     this.nicknameValue = window.localStorage["nickname"];
     this.emailValue = window.localStorage["email"];
