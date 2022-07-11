@@ -18,9 +18,10 @@
 <script>
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
 export default {
-  name: "SocialTab",
+  // eslint-disable-next-line
+  name: "Social",
   components: {
-    MyInputs
+    MyInputs,
   },
 };
 </script>
