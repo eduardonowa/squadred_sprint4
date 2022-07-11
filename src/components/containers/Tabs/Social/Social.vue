@@ -26,6 +26,7 @@
 <script>
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
 import Button from "@/components/micro/Button/Button.vue";
+import { mapActions } from "vuex";
 export default {
   // eslint-disable-next-line
   name: "Social",
@@ -40,11 +41,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["nextTab"]),
     verify() {
       if (localStorage.getItem("github")) {
-        console.log("ok");
-      } else {
-        console.log("not ok");
+        this.nextTab();
       }
     },
   },
@@ -52,7 +52,6 @@ export default {
     this.linkedinValue = localStorage.getItem("linkedin");
     this.githubValue = localStorage.getItem("github");
     document.title = `${process.env.VUE_APP_TITLE} | Social`;
-
   },
 };
 </script>
