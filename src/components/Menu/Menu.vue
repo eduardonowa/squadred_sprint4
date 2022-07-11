@@ -38,7 +38,7 @@ export default {
     this.loadTab(this.actualTab);
   },
   methods: {
-    ...mapActions(["ableTab", "changeActualTab"]),
+    ...mapActions(["changeActualTab"]),
     focused(className) {
       this.abledTabs.forEach((tab) => {
         const el = document.querySelector(`.${tab.toLowerCase()}`);
