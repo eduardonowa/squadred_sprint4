@@ -78,7 +78,7 @@ export default {
         this.next();
       }
     },
-    next() {
+     next() {
       if (
         !(
           this.$store.state.menuTabs.indexOf(this.$store.state.actualTab) +
