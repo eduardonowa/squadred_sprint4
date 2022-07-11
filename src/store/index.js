@@ -57,11 +57,20 @@ export default new Vuex.Store({
     },
     setCheckbox(state, checkbox) {
       state.checkbox = checkbox;
-      window.localStorage['terms'] = checkbox;
+      window.localStorage["terms"] = checkbox;
     },
     setLinkedin(state, linkedin) {
       state.linkedin = linkedin;
-      window.localStorage.setItem("linkedin", linkedin);
+      if (
+        // eslint-disable-next-line
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+          linkedin
+        )
+      ) {
+        window.localStorage.setItem("linkedin", linkedin);
+      } else {
+        window.localStorage.setItem("linkedin", "");
+      }
     },
     setGithub(state, github) {
       state.github = github;
@@ -72,15 +81,28 @@ export default new Vuex.Store({
         )
       ) {
         window.localStorage.setItem("github", github);
+        document.getElementById("spanGit").style.visibility = "hidden";
       } else {
+        document.getElementById("spanGit").style.visibility = "visible";
         window.localStorage.setItem("github", "");
       }
     },
-    ableTab(state, tab) {
-      state.abledTabs.push(tab);
-    },
     changeActualTab(state, newTab) {
       state.actualTab = newTab;
+    },
+    nextTab(state) {
+      if (
+          state.menuTabs.indexOf(state.actualTab) +
+            1 !==
+          state.menuTabs.length
+      ) {
+        state.abledTabs.push(
+          state.menuTabs[
+            state.menuTabs.indexOf(state.actualTab) + 1
+        ]
+        );
+        state.actualTab = state.abledTabs[state.abledTabs.length - 1];
+      }
     },
   },
   actions: {
@@ -105,12 +127,12 @@ export default new Vuex.Store({
     setGithub({ commit }, github) {
       commit("setGithub", github);
     },
-    ableTab({ commit }, tab) {
-      commit("ableTab", tab);
+    changeActualTab({ commit }, newTab) {
+      commit("changeActualTab", newTab);
     },
-    changeActualTab({ commit }, tab) {
-      commit("changeActualTab", tab);
-    },
+    nextTab({ commit }) {
+      commit("nextTab");
+    }
   },
   modules: {},
 });
