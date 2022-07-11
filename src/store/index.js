@@ -76,11 +76,22 @@ export default new Vuex.Store({
         window.localStorage.setItem("github", "");
       }
     },
-    ableTab(state, tab) {
-      state.abledTabs.push(tab);
-    },
     changeActualTab(state, newTab) {
       state.actualTab = newTab;
+    },
+    nextTab(state) {
+      if (
+          state.menuTabs.indexOf(state.actualTab) +
+            1 !==
+          state.menuTabs.length
+      ) {
+        state.abledTabs.push(
+          state.menuTabs[
+            state.menuTabs.indexOf(state.actualTab) + 1
+        ]
+        );
+        state.actualTab = state.abledTabs[state.abledTabs.length - 1];
+      }
     },
   },
   actions: {
@@ -105,12 +116,12 @@ export default new Vuex.Store({
     setGithub({ commit }, github) {
       commit("setGithub", github);
     },
-    ableTab({ commit }, tab) {
-      commit("ableTab", tab);
+    changeActualTab({ commit }, newTab) {
+      commit("changeActualTab", newTab);
     },
-    changeActualTab({ commit }, tab) {
-      commit("changeActualTab", tab);
-    },
+    nextTab({ commit }) {
+      commit("nextTab");
+    }
   },
   modules: {},
 });
