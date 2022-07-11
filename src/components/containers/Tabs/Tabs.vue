@@ -12,7 +12,7 @@
     </template>
 
     <template v-else-if="getActualTab === 'certificates'">
-      <Certificates />
+      <Success />
     </template>
 
     <button @click.prevent="next">Next</button>
@@ -24,7 +24,8 @@ import MenuComponent from "@/components/Menu/Menu.vue";
 import { mapActions } from "vuex";
 import Social from "@/components/containers/Tabs/Social/Social.vue";
 import Basic from "@/components/containers/Tabs/Basic/Basic.vue";
-import Certificates from "@/components/containers/Tabs/Certificates/Certificates.vue";
+// import Certificates from "@/components/containers/Tabs/Certificates/Certificates.vue";
+import Success from "@/components/containers/Tabs/Success/Success.vue";
 
 export default {
   // eslint-disable-next-line
@@ -43,7 +44,7 @@ export default {
       return this.$store.state.actualTab;
     },
   },
-  components: { MenuComponent, Social, Basic, Certificates },
+  components: { MenuComponent, Social, Basic, Success },
 
   methods: {
     ...mapActions(["ableTab", "changeActualTab"]),
