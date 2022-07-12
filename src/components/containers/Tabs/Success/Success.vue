@@ -7,7 +7,7 @@
     </p>
     <p>Email : {{ this.$store.state.email }}</p>
     <p v-if="this.$store.state.phone">Phone : {{ this.$store.state.phone }}</p>
-    <p>Birthday : {{ this.$store.state.birthday }}</p>
+    <p>Birthday : {{ birthday }}</p>
     <p>Age : {{ this.$store.state.age }}</p>
     <p v-if="this.$store.state.linkedin">
       Linkedin : {{ this.$store.state.linkedin }}
@@ -33,6 +33,19 @@ export default {
   components: {
     Button,
   },
+  data() {
+    return {
+      birthday: "",
+    };
+  },
+  methods: {
+    getBirthday() {
+      this.birthday = localStorage.getItem('Birthday');
+    },
+  },
+  mounted(){
+    this.getBirthday()
+  }
 };
 </script>
 
