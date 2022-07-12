@@ -15,7 +15,7 @@
       <Success />
     </template>
 
-    <button @click.prevent="next">Next</button>
+    <button @click.prevent="nextTab">Next</button>
   </div>
 </template>
 
@@ -47,25 +47,7 @@ export default {
   components: { MenuComponent, Social, Basic, Success },
 
   methods: {
-    ...mapActions(["ableTab", "changeActualTab"]),
-    next() {
-      if (
-        !(
-          this.$store.state.menuTabs.indexOf(this.actualTab) + 1 ===
-          this.$store.state.menuTabs.length
-        )
-      ) {
-        this.ableTab(
-          this.$store.state.menuTabs[
-            this.$store.state.menuTabs.indexOf(this.actualTab) + 1
-          ]
-        );
-        this.changeActualTab(
-          this.$store.state.abledTabs[this.$store.state.abledTabs.length - 1]
-        );
-        this.actualTab = this.$store.state.actualTab;
-      }
-    },
+    ...mapActions(["nextTab"]),
   },
 };
 </script>

@@ -19,13 +19,20 @@
     <p>Team Name : {{ this.$store.state.teamName }}</p>
     <p>Institution : {{ this.$store.state.institution }}</p>
     <p>Graduation : {{ this.$store.state.graduation }}</p>
+    <div class="button">
+      <Button type="1" msg="Return" />
+    </div>
   </div>
 </template>
 
 <script>
+import Button from "@/components/micro/Button/Button.vue";
 export default {
   //eslint-disable-next-line
   name: "Success",
+  components: {
+    Button,
+  },
 };
 </script>
 

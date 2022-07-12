@@ -55,15 +55,16 @@ export default {
     };
   },
   mounted() {
+    document.title = `${process.env.VUE_APP_TITLE} | Basic`;
+
     this.fullnameValue = window.localStorage["fullname"];
     this.nicknameValue = window.localStorage["nickname"];
     this.emailValue = window.localStorage["email"];
     this.phoneValue = window.localStorage["phone"];
   },
   methods: {
-    ...mapActions(["ableTab", "changeActualTab"]),
+    ...mapActions(["nextTab"]),
     validate() {
-      console.log("inside validate");
       if (
         window.localStorage["fullname"] &&
         window.localStorage["nickname"] &&
@@ -72,26 +73,7 @@ export default {
         window.localStorage["age"] &&
         JSON.parse(window.localStorage["terms"])
       ) {
-        console.log("valid");
-        this.next();
-      }
-    },
-    next() {
-      if (
-        !(
-          this.$store.state.menuTabs.indexOf(this.$store.state.actualTab) +
-            1 ===
-          this.$store.state.menuTabs.length
-        )
-      ) {
-        this.ableTab(
-          this.$store.state.menuTabs[
-            this.$store.state.menuTabs.indexOf(this.$store.state.actualTab) + 1
-          ]
-        );
-        this.changeActualTab(
-          this.$store.state.abledTabs[this.$store.state.abledTabs.length - 1]
-        );
+        this.nextTab();
       }
     },
   },

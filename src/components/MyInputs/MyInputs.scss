@@ -9,9 +9,9 @@ label {
 }
 
 span {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #ff0000;
-  display: none;
+  visibility: hidden;
 }
 
 input {
@@ -29,3 +29,4 @@ input {
     outline: 0;
   }
 }
+

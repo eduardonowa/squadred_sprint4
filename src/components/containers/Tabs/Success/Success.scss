@@ -8,6 +8,11 @@
   align-items: flex-start;
   justify-content: center;
   gap: 10px;
+  .button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
   @media (max-width: 768px) {
     padding: 0;
   }
