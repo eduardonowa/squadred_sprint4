@@ -20,21 +20,40 @@
 
     .certificates {
       width: 200px;
-      display: flex;
-      flex-flow: column wrap;
-      align-items: center;
-      justify-content: center;
       text-align: left;
       font-family: "Nunito", sans-serif;
+      position: relative;
+      display: inline-block;
 
       .certificateButton {
         visibility: visible;
       }
-      .removeButton {
-        background: transparent;
-        border: none;
+      
+      .certificatesList {
+        position: absolute;
+        background: rgba(7, 78, 232, 0.8);
+        border-radius: 4px;
         color: #ffffff;
-        font-size: 1em;
+        padding: 5px 5px;
+        width: 200px;
+
+        div {
+          display: grid;
+          grid-template-columns: 90% 10%;
+
+          p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          
+          .removeButton {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1em;
+          }
+        }
       }
     }
   }
@@ -50,17 +69,6 @@
   margin-top: 10px;
   display: flex;
   justify-content: end;
-}
-
-.certificatesList {
-  background: rgba(7, 78, 232, 0.8);
-  border-radius: 4px;
-  color: #ffffff;
-  padding: 5px 5px;
-  width: 200px;
-  display: flex;
-  justify-content: space-between;
-  
 }
 
 span {

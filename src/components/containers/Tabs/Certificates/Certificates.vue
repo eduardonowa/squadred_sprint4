@@ -15,13 +15,15 @@
           class="certificateButton"
           :event="openCertificates"
         ></Button>
-        <div v-show="isOpenCertificates">
+        <div
+          v-show="isOpenCertificates"
+          class="certificatesList"
+          >
           <div
-            class="certificatesList"
             v-for="(certificate, index) in certificates"
             :key="index + certificate"
-          >
-            {{ certificate }}
+            >
+            <p>{{ certificate }}</p>
             <button class="removeButton" @click="removeFromCertificates(index)">
               X
             </button>
