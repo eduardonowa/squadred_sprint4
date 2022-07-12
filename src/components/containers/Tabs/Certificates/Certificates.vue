@@ -8,8 +8,35 @@
       :valueInput="certificatesValue"
     />
     <div class="buttons">
-      <Button msg="Certificate" type="3" class="certificateButton"></Button>
-      <Button msg="More" type="2" class="moreButton"></Button>
+      <div class="certificates">
+        <Button
+          msg="Certificate"
+          type="3"
+          class="certificateButton"
+          :event="openCertificates"
+        ></Button>
+        <div v-show="isOpenCertificates">
+          <div
+            class="certificatesList"
+            v-for="(certificate, index) in certificates"
+            :key="index + certificate"
+          >
+            {{ certificate }}
+            <button class="removeButton" @click="removeFromCertificates(index)">
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="more-span">
+        <Button
+          msg="More"
+          type="2"
+          class="moreButton"
+          :event="addCertificates"
+        ></Button>
+        <span> {{ spanMsg }} </span>
+      </div>
     </div>
     <MyInputs
       LabelInput="TeamName *"
@@ -38,7 +65,7 @@
       Type="text"
       :valueInput="graduationValue"
     />
-    <Button class="finish" msg="Finish" type="1"></Button>
+    <Button class="finish" msg="Finish" type="1" :event="validate"></Button>
   </div>
 </template>
 
@@ -50,35 +77,62 @@ import { mapActions } from "vuex";
 export default {
   // eslint-disable-next-line
   name: "Certificates",
-  components: { MyInputs, Button, },
-  data(){
-    return{
+  components: { MyInputs, Button },
+  data() {
+    return {
       certificatesValue: "",
       teamnameValue: "",
       institutionValue: "",
       graduationValue: "",
+      certificates: [],
+      isOpenCertificates: true,
+      spanMsg: "",
     };
   },
-  mounted(){
+  mounted() {
     document.title = `${process.env.VUE_APP_TITLE} | Certificates`;
 
-    this.certificatesValue = window.localStorage["certificates"];
-    this.teamnameValue = window.localStorage["teamname"];
+    this.certificatesValue = window.localStorage["certificate"];
+    this.teamnameValue = window.localStorage["TeamName"];
     this.institutionValue = window.localStorage["institution"];
     this.graduationValue = window.localStorage["graduation"];
   },
   methods: {
     ...mapActions(["nextTab"]),
     validate() {
-      if(
-        window.localStorage["certificates"] &&
-        window.localStorage["teamname"] &&
+      if (
+        window.localStorage["certificate"] &&
+        window.localStorage["TeamName"] &&
         window.localStorage["institution"] &&
         window.localStorage["graduation"]
       ) {
         this.nextTab();
+        console.log("valid");
+      } else {
+        console.log("notvalid");
       }
-    }
+    },
+    openCertificates() {
+      this.isOpenCertificates = !this.isOpenCertificates;
+    },
+    addCertificates() {
+      if (this.$store.state.certificate && this.certificates.length <= 4) {
+        this.certificates.push(this.$store.state.certificate);
+        this.spanMsg = "";
+        console.log(this.certificates);
+      } else if (!this.$store.state.certificate) {
+        this.spanMsg = "Empty certificate is not allowed.";
+      } else if (this.certificates.length == 5) {
+        this.spanMsg =
+          "Sorry, only 5 certificates are allowed. You can remove one certificate instead.";
+      }
+    },
+
+    removeFromCertificates(indexRemove) {
+      this.certificates = this.certificates.filter(
+        (data, index) => index !== indexRemove
+      );
+    },
   },
 };
 </script>

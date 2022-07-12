@@ -1,20 +1,70 @@
-.buttons{
+.certificate-container {
+  margin-top: 1em;
+
+  .buttons {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 1.5em;
     margin-top: 10px;
 
-}
+    .more-span {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: end;
+      justify-content: end;
+      gap: 5px;
+      text-align: right;
+      width: 45%;
+    }
 
+    .certificates {
+      width: 200px;
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      font-family: "Nunito", sans-serif;
+
+      .certificateButton {
+        visibility: visible;
+      }
+      .removeButton {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 1em;
+      }
+    }
+  }
+}
 .certificate,
 .team-name,
 .institution,
-.graduation{
-    margin-top:0.5em;
+.graduation {
+  margin-top: 0.5em;
 }
 
-.finish{
-    margin-top: 10px;
-    display: flex;
-    justify-content: end;
+.finish {
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+}
+
+.certificatesList {
+  background: rgba(7, 78, 232, 0.8);
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 5px 5px;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+span {
+  font-size: 0.9em;
+  color: #ff0000;
+  visibility: visible;
 }
