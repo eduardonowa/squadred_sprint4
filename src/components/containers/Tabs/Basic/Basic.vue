@@ -74,6 +74,18 @@ export default {
         JSON.parse(window.localStorage["terms"])
       ) {
         this.nextTab();
+      } else {
+        ["full-name", "nickname", "email", "phone"].forEach(input => {
+          if (input !== "full-name") {
+            if (!window.localStorage[input]) {
+              document.querySelector(`.${input} .ClassSpan`).style.visibility = 'visible';
+            }
+          } else {
+            if (!window.localStorage["fullname"]) {
+              document.querySelector(`.${input} .ClassSpan`).style.visibility = 'visible';
+            }
+          }
+        });
       }
     },
   },
