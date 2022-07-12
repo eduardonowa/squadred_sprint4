@@ -81,9 +81,7 @@ export default new Vuex.Store({
         )
       ) {
         window.localStorage.setItem("github", github);
-        document.getElementById("spanGit").style.visibility = "hidden";
       } else {
-        document.getElementById("spanGit").style.visibility = "visible";
         window.localStorage.setItem("github", "");
       }
     },
@@ -92,14 +90,11 @@ export default new Vuex.Store({
     },
     nextTab(state) {
       if (
-          state.menuTabs.indexOf(state.actualTab) +
-            1 !==
-          state.menuTabs.length
+        state.menuTabs.indexOf(state.actualTab) + 1 !==
+        state.menuTabs.length
       ) {
         state.abledTabs.push(
-          state.menuTabs[
-            state.menuTabs.indexOf(state.actualTab) + 1
-        ]
+          state.menuTabs[state.menuTabs.indexOf(state.actualTab) + 1]
         );
         state.actualTab = state.abledTabs[state.abledTabs.length - 1];
       }
@@ -132,7 +127,7 @@ export default new Vuex.Store({
     },
     nextTab({ commit }) {
       commit("nextTab");
-    }
+    },
   },
   modules: {},
 });

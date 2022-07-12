@@ -44,7 +44,10 @@ export default {
     ...mapActions(["nextTab"]),
     verify() {
       if (localStorage.getItem("github")) {
+        document.getElementById("spanGit").style.visibility = "hidden";
         this.nextTab();
+      } else {
+        document.getElementById("spanGit").style.visibility = "visible";
       }
     },
   },
