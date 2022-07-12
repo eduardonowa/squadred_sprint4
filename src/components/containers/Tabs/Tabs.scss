@@ -2,13 +2,15 @@
   padding: 20px 40px;
   margin: 50px auto;
   width: 600px;
-  min-height: 700px;
+  min-height: 650px;
   background: white;
   border-radius: 20px;
   @media (max-width: 768px) {
     width: 100%;
     height: 100%;
     border-radius: 0;
+    margin: 0 auto;
+    padding: 0 40px;
   }
   .teamSign {
     padding-top: 45px;

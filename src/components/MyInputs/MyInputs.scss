@@ -6,12 +6,19 @@ label {
   font-size: 1.2em;
   color: #767676;
   margin-right: 2em;
+  @media (max-width: 450px){
+    font-size: 1em;
+    margin-right: 1em;
+  }
 }
 
 span {
-  font-size: 1.1em;
+  font-size: 1em;
   color: #ff0000;
-  visibility: hidden;
+  visibility: visible;
+  @media (max-width: 450px){
+    font-size: 0.75em;
+  }
 }
 
 input {
