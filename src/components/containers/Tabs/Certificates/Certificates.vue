@@ -15,14 +15,12 @@
           class="certificateButton"
           :event="openCertificates"
         ></Button>
-        <div
-          v-show="isOpenCertificates"
-          class="certificatesList"
-          >
+        <div v-show="isOpenCertificates" class="certificatesList" id="idList">
           <div
+            id="listOfCertificates"
             v-for="(certificate, index) in certificates"
             :key="index + certificate"
-            >
+          >
             <p>{{ certificate }}</p>
             <button class="removeButton" @click="removeFromCertificates(index)">
               X
@@ -87,17 +85,10 @@ export default {
       institutionValue: "",
       graduationValue: "",
       certificates: [],
-      isOpenCertificates: true,
+      isOpenCertificates: false,
       spanMsg: "",
+      moreButtonAppear: false,
     };
-  },
-  mounted() {
-    document.title = `${process.env.VUE_APP_TITLE} | Certificates`;
-
-    this.certificatesValue = window.localStorage["certificate"];
-    this.teamnameValue = window.localStorage["TeamName"];
-    this.institutionValue = window.localStorage["institution"];
-    this.graduationValue = window.localStorage["graduation"];
   },
   methods: {
     ...mapActions(["nextTab"]),
@@ -121,7 +112,6 @@ export default {
       if (this.$store.state.certificate && this.certificates.length <= 4) {
         this.certificates.push(this.$store.state.certificate);
         this.spanMsg = "";
-        console.log(this.certificates);
       } else if (!this.$store.state.certificate) {
         this.spanMsg = "Empty certificate is not allowed.";
       } else if (this.certificates.length == 5) {
@@ -135,6 +125,32 @@ export default {
         (data, index) => index !== indexRemove
       );
     },
+
+    canMoreAppear() {
+      if (this.certificates.length >= 1) {
+        document.getElementById("button3").style.visibility = "visible";
+        document.getElementById("idList").style.visibility = "visible";
+      } else {
+        document.getElementById("button3").style.visibility = "hidden";
+        document.getElementById("idList").style.visibility = "hidden";
+      }
+    },
+  },
+  updated() {
+    this.canMoreAppear();
+    window.localStorage.setItem(
+      "certificates",
+      JSON.stringify(this.certificates)
+    );
+  },
+  mounted() {
+    document.title = `${process.env.VUE_APP_TITLE} | Certificates`;
+    this.certificatesValue = window.localStorage["certificate"];
+    this.teamnameValue = window.localStorage["TeamName"];
+    this.institutionValue = window.localStorage["institution"];
+    this.graduationValue = window.localStorage["graduation"];
+    let certificatesStorage = JSON.parse(localStorage.getItem("certificates"));
+    this.certificates = certificatesStorage;
   },
 };
 </script>

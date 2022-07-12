@@ -15,7 +15,11 @@
 #button3 {
   width: 200px;
   font-size: 1em;
-  padding: 5px 5px; 
+  padding: 5px 5px;
+  visibility: hidden;
+  @media(max-width:768px){
+    width: 100%;
+  }
 }
 .img0 {
   width: 7px;
