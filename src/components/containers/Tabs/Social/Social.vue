@@ -26,6 +26,7 @@
 <script>
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
 import Button from "@/components/micro/Button/Button.vue";
+import { mapActions } from "vuex";
 export default {
   // eslint-disable-next-line
   name: "Social",
@@ -40,11 +41,13 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["nextTab"]),
     verify() {
       if (localStorage.getItem("github")) {
-        console.log("ok");
+        document.getElementById("spanGit").style.visibility = "hidden";
+        this.nextTab();
       } else {
-        console.log("not ok");
+        document.getElementById("spanGit").style.visibility = "visible";
       }
     },
   },

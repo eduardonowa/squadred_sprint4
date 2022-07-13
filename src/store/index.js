@@ -85,9 +85,7 @@ export default new Vuex.Store({
         )
       ) {
         window.localStorage.setItem("github", github);
-        document.getElementById("spanGit").style.visibility = "hidden";
       } else {
-        document.getElementById("spanGit").style.visibility = "visible";
         window.localStorage.setItem("github", "");
       }
     },
@@ -175,6 +173,7 @@ export default new Vuex.Store({
     setGraduation({ commit }, graduation) {
       commit("setGraduation", graduation);
     },
+
   },
   modules: {},
 });
