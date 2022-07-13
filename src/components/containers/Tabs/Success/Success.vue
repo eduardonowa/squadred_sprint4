@@ -13,7 +13,18 @@
       Linkedin : {{ this.$store.state.linkedin }}
     </p>
     <p>Github : {{ this.$store.state.github }}</p>
-    <p v-if="this.certificates">Certificates : {{ this.certificates }}</p>
+
+    <div v-if="this.certificates" class="certificates">
+      <div class="title">
+        <p>Certificates:</p>
+      </div>
+      <div class="list">
+        <p v-for="(certificate, index) in this.certificates" :key="index">
+          {{ certificate }}
+          <br />
+        </p>
+      </div>
+    </div>
     <p>Team Name : {{ this.$store.state.teamName }}</p>
     <p>Institution : {{ this.$store.state.institution }}</p>
     <p>Graduation : {{ this.$store.state.graduation }}</p>
@@ -34,13 +45,13 @@ export default {
   data() {
     return {
       birthday: "",
-      certificates: "",
+      certificates: [],
     };
   },
   methods: {
     getData() {
       this.birthday = localStorage.getItem("Birthday");
-      this.certificates = localStorage.getItem("certificates");
+      this.certificates = JSON.parse(localStorage.getItem("certificates"));
     },
 
     clearStorage() {

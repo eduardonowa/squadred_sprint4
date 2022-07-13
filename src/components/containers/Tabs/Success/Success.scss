@@ -8,6 +8,21 @@
   align-items: flex-start;
   justify-content: center;
   gap: 10px;
+  .certificates {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .list {
+    width: 100%;
+    p {
+      width: 60%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
   .button {
     width: 100%;
     display: flex;

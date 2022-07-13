@@ -173,7 +173,6 @@ export default new Vuex.Store({
     setGraduation({ commit }, graduation) {
       commit("setGraduation", graduation);
     },
-
   },
   modules: {},
 });
