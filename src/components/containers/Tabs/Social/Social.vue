@@ -18,7 +18,7 @@
     />
 
     <div class="button">
-      <Button type="1" msg="Next" :event="verify" />
+      <Button type="0" msg="Next" :event="verify" />
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@
 <script>
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
 import Button from "@/components/micro/Button/Button.vue";
+import { mapActions } from "vuex";
 export default {
   // eslint-disable-next-line
   name: "Social",
@@ -40,11 +41,13 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["nextTab"]),
     verify() {
       if (localStorage.getItem("github")) {
-        console.log("ok");
+        document.getElementById("spanGit").style.visibility = "hidden";
+        this.nextTab();
       } else {
-        console.log("not ok");
+        document.getElementById("spanGit").style.visibility = "visible";
       }
     },
   },
@@ -52,7 +55,6 @@ export default {
     this.linkedinValue = localStorage.getItem("linkedin");
     this.githubValue = localStorage.getItem("github");
     document.title = `${process.env.VUE_APP_TITLE} | Social`;
-
   },
 };
 </script>

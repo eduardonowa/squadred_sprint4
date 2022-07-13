@@ -1,0 +1,19 @@
+.success-container {
+  padding: 50px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 1.2em;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  .button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}

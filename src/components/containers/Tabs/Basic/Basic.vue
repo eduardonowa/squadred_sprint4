@@ -31,8 +31,12 @@
       Type="tel"
     />
     <Birthday />
-    <Checkbox />
-    <Button :event="validate" type="0" msg="Next"></Button>
+    <div class="footer">
+      <Checkbox />
+      <div class="button-next">
+        <Button :event="validate" type="0" msg="Next"></Button>
+      </div>
+    </div>
   </div>
 </template>
 
