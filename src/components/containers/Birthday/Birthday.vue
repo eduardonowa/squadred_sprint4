@@ -7,7 +7,7 @@
         <label>Day</label>
         <select name="day" id="day" @change="getDay($event)">
           <option>Day</option>
-          <option v-for="day in 31" :key="day">
+          <option v-for="day in 31" :key="day" :selected="selectedDay == day ? true : false">
             {{ padStart(day) }}
           </option>
         </select>
@@ -16,7 +16,7 @@
         <label>Month</label>
         <select name="month" id="month" @change="getMonth($event)">
           <option>Month</option>
-          <option v-for="month in 12" :key="month">
+          <option v-for="month in 12" :key="month" :selected="selectedMonth == month ? true : false">
             {{ padStart(month) }}
           </option>
         </select>
@@ -25,7 +25,7 @@
         <label>Year</label>
         <select name="year" id="year" @change="getYear($event)">
           <option>Year</option>
-          <option v-for="year in this.rangeYears" :key="year">
+          <option v-for="year in this.rangeYears" :key="year" :selected="selectedYear == (year + 1900) ? true : false">
             {{ year + 1900 }}
           </option>
         </select>
@@ -97,6 +97,17 @@ export default {
     this.getActualYear();
     this.age = window.localStorage["age"];
   },
+  computed: {
+    selectedDay() {
+      return window.localStorage.getItem('Birthday') ? window.localStorage.getItem('Birthday').split('/')[0] : 0;
+    },
+    selectedMonth() {
+      return window.localStorage.getItem('Birthday') ? window.localStorage.getItem('Birthday').split('/')[1] : 0
+    },
+    selectedYear() {
+      return window.localStorage.getItem('Birthday') ? window.localStorage.getItem('Birthday').split('/')[2] : 0
+    }
+  }
 };
 </script>
 
