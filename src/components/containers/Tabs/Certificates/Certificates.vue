@@ -99,8 +99,8 @@ export default {
         window.localStorage["institution"] &&
         window.localStorage["graduation"]
       ) {
-        this.nextTab();
         console.log("valid");
+        this.$store.state.actualTab = "success";
       } else {
         console.log("notvalid");
       }
