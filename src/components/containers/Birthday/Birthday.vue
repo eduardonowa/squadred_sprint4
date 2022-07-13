@@ -7,7 +7,11 @@
         <label>Day</label>
         <select name="day" id="day" @change="getDay($event)">
           <option>Day</option>
-          <option v-for="day in 31" :key="day" :selected="selectedDay == day ? true : false">
+          <option
+            v-for="day in 31"
+            :key="day"
+            :selected="selectedDay == day ? true : false"
+          >
             {{ padStart(day) }}
           </option>
         </select>
@@ -16,7 +20,11 @@
         <label>Month</label>
         <select name="month" id="month" @change="getMonth($event)">
           <option>Month</option>
-          <option v-for="month in 12" :key="month" :selected="selectedMonth == month ? true : false">
+          <option
+            v-for="month in 12"
+            :key="month"
+            :selected="selectedMonth == month ? true : false"
+          >
             {{ padStart(month) }}
           </option>
         </select>
@@ -25,7 +33,11 @@
         <label>Year</label>
         <select name="year" id="year" @change="getYear($event)">
           <option>Year</option>
-          <option v-for="year in this.rangeYears" :key="year" :selected="selectedYear == (year + 1900) ? true : false">
+          <option
+            v-for="year in this.rangeYears"
+            :key="year"
+            :selected="selectedYear == year + 1900 ? true : false"
+          >
             {{ year + 1900 }}
           </option>
         </select>
@@ -56,9 +68,11 @@ export default {
   methods: {
     getDay(event) {
       this.day = event.target.value;
+      window.localStorage.setItem("day", this.day);
     },
     getMonth(event) {
       this.month = event.target.value;
+      window.localStorage.setItem("month", this.month);
     },
     getYear(event) {
       this.year = event.target.value;
@@ -75,6 +89,7 @@ export default {
         actualMonth = actualMonth + 12;
         this.actualYear = this.actualYear - 1;
       }
+      window.localStorage.setItem("year", this.year);
       this.age = this.actualYear - this.year;
       window.localStorage.setItem("age", this.age);
     },
@@ -87,27 +102,27 @@ export default {
       this.rangeYears = date.getFullYear() - 1900;
     },
   },
-  updated() {
-    window.localStorage.setItem(
-      "Birthday",
-      `${this.day}/${this.month}/${this.year}`
-    );
-  },
   mounted() {
     this.getActualYear();
     this.age = window.localStorage["age"];
   },
   computed: {
     selectedDay() {
-      return window.localStorage.getItem('Birthday') ? window.localStorage.getItem('Birthday').split('/')[0] : 0;
+      return window.localStorage.getItem("day")
+        ? window.localStorage.getItem("day")
+        : 0;
     },
     selectedMonth() {
-      return window.localStorage.getItem('Birthday') ? window.localStorage.getItem('Birthday').split('/')[1] : 0
+      return window.localStorage.getItem("month")
+        ? window.localStorage.getItem("month")
+        : 0;
     },
     selectedYear() {
-      return window.localStorage.getItem('Birthday') ? window.localStorage.getItem('Birthday').split('/')[2] : 0
-    }
-  }
+      return window.localStorage.getItem("year")
+        ? window.localStorage.getItem("year")
+        : 0;
+    },
+  },
 };
 </script>
 
