@@ -1,10 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home";
-import Basic from "../components/containers/Tabs/Basic/Basic.vue";
-import Social from "../components/containers/Tabs/Social/Social.vue";
-import Certificates from "../components/containers/Tabs/Certificates/Certificates.vue";
 import Error404 from "../components/Error404/Error404.vue";
+import Success from "../components/containers/Tabs/Success/Success.vue";
 
 Vue.use(VueRouter);
 
@@ -15,19 +13,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/Basic",
-    name: "Basic",
-    component: Basic,
-  },
-  {
-    path: "/Social",
-    name: "Social",
-    component: Social,
-  },
-  {
-    path: "/Certificates",
-    name: "Certificates",
-    component: Certificates,
+    path: "/Success",
+    name: "Success",
+    component: Success,
   },
   {
     path: "*",

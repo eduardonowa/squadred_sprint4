@@ -13,14 +13,12 @@
       Linkedin : {{ this.$store.state.linkedin }}
     </p>
     <p>Github : {{ this.$store.state.github }}</p>
-    <p v-if="this.$store.state.certificates">
-      Full Name : {{ this.$store.state.certificates }}
-    </p>
+    <p v-if="this.certificates">Certificates : {{ this.certificates }}</p>
     <p>Team Name : {{ this.$store.state.teamName }}</p>
     <p>Institution : {{ this.$store.state.institution }}</p>
     <p>Graduation : {{ this.$store.state.graduation }}</p>
     <div class="button">
-      <Button type="1" msg="Return" />
+      <Button type="1" msg="Return" :event="clearStorage" />
     </div>
   </div>
 </template>
@@ -36,16 +34,22 @@ export default {
   data() {
     return {
       birthday: "",
+      certificates: "",
     };
   },
   methods: {
-    getBirthday() {
-      this.birthday = localStorage.getItem('Birthday');
+    getData() {
+      this.birthday = localStorage.getItem("Birthday");
+      this.certificates = localStorage.getItem("certificates");
+    },
+
+    clearStorage() {
+      localStorage.clear();
     },
   },
-  mounted(){
-    this.getBirthday()
-  }
+  mounted() {
+    this.getData();
+  },
 };
 </script>
 
