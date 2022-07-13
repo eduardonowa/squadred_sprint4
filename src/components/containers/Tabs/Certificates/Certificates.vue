@@ -109,9 +109,9 @@ export default {
       this.isOpenCertificates = !this.isOpenCertificates;
     },
     addCertificates() {
+      console.log(this.certificates.length);
       if (this.$store.state.certificate && this.certificates.length <= 4) {
         this.certificates.push(this.$store.state.certificate);
-        this.spanMsg = "";
       } else if (!this.$store.state.certificate) {
         this.spanMsg = "Empty certificate is not allowed.";
       } else if (this.certificates.length == 5) {
@@ -135,6 +135,15 @@ export default {
         document.getElementById("idList").style.visibility = "hidden";
       }
     },
+
+    getCertificatesStorage() {
+      if (localStorage.getItem("certificates")) {
+        let certificatesStorage = JSON.parse(
+          localStorage.getItem("certificates")
+        );
+        this.certificates = certificatesStorage;
+      }
+    },
   },
   updated() {
     this.canMoreAppear();
@@ -149,8 +158,7 @@ export default {
     this.teamnameValue = window.localStorage["TeamName"];
     this.institutionValue = window.localStorage["institution"];
     this.graduationValue = window.localStorage["graduation"];
-    let certificatesStorage = JSON.parse(localStorage.getItem("certificates"));
-    this.certificates = certificatesStorage;
+    this.getCertificatesStorage();
   },
 };
 </script>
