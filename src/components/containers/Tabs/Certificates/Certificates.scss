@@ -2,6 +2,15 @@
   margin-top: 1em;
   position: relative;
 
+  span {
+    font-size: 0.9em;
+    color: #ff0000;
+    visibility: visible;
+    @media (max-width: 580px) {
+      font-size: 0.75em;
+    }
+  }
+
   .buttons {
     display: flex;
     justify-content: space-between;
@@ -60,31 +69,39 @@
       }
     }
   }
+
+  .footer-certificates {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    @media (max-width: 768px) {
+      gap: 8px;
+    }
+    span {
+      position: absolute;
+      bottom: -30px;
+      @media (max-width: 768px) {
+        position: static;
+      }
+    }
+    .finish {
+      display: flex;
+      justify-content: flex-end;
+      position: absolute;
+      top: 420px;
+      right: 0px;
+      @media (max-width: 768px) {
+        margin-top: 20px;
+        position: static;
+      }
+    }
+  }
 }
 .certificate,
 .team-name,
 .institution,
 .graduation {
   margin-top: 0.5em;
-}
-
-.finish {
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  top: 420px;
-  right: 0px;
-  @media(max-width:768px){
-    margin-top: 20px;
-    position: static;
-  }
-}
-
-span {
-  font-size: 0.9em;
-  color: #ff0000;
-  visibility: visible;
-  @media (max-width: 580px) {
-    font-size: 0.75em;
-  }
 }
