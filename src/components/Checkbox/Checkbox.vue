@@ -7,6 +7,7 @@
         class="chk"
         id="checkbox"
         required
+        :checked="status"
         @change="getValue"
       />
       <span class="geekmark"></span>
@@ -21,11 +22,23 @@ import { mapActions } from "vuex";
 export default {
   // eslint-disable-next-line
   name: "Checkbox",
+  data() {
+    return {
+      status: null,
+    }
+  },
+  mounted() {
+    if (JSON.parse(window.localStorage.getItem('terms')) !== null) {
+      this.status = JSON.parse(window.localStorage.getItem('terms'));
+    } else {
+      this.status = true;
+      window.localStorage.setItem('terms', this.status);
+    } 
+  },
   methods: {
     ...mapActions(["setCheckbox"]),
-
+    
     getValue(e) {
-      console.log(e.target);
       if (e.target.checked) {
         this.setCheckbox(true);
       } else {

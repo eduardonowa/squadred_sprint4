@@ -81,12 +81,18 @@ export default {
       } else {
         ["full-name", "nickname", "email", "phone"].forEach(input => {
           if (input !== "full-name") {
+            let error = document.querySelector(`.${input} .ClassSpan`);
             if (!window.localStorage[input]) {
-              document.querySelector(`.${input} .ClassSpan`).style.visibility = 'visible';
+              error.style.visibility = 'visible';
+            } else {
+              error.style.visibility = 'hidden';
             }
           } else {
+            let error = document.querySelector(`.${input} .ClassSpan`);
             if (!window.localStorage["fullname"]) {
-              document.querySelector(`.${input} .ClassSpan`).style.visibility = 'visible';
+              error.style.visibility = 'visible';
+            } else {
+              error.style.visibility = 'hidden';
             }
           }
         });
