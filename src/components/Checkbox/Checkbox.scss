@@ -53,6 +53,9 @@ input[type="checkbox"] {
   font-size: 1.2em;
   padding-left: 20px;
   padding-top: 10px;
+  @media(max-width:768px){
+    font-size: 1em;
+  }
 }
 
 #chkError {
@@ -60,6 +63,9 @@ input[type="checkbox"] {
   font-family: "Nunito", sans-serif;
   color: red;
   padding-left: 40px;
+  @media(max-width:768px){
+    font-size: 0.9em;
+  }
 }
 
 .box-terms {

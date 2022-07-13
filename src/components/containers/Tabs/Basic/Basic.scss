@@ -1,44 +1,58 @@
 .basic-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 1em;
-
-    .full-name,
-    .nickname,
-    .email,
-    .phone {
-        margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  position: relative;
+  .footer {
+    width: 100%;
+    .button-next {
+      position: absolute;
+      right: 0;
+      top: 420px;
+      @media (max-width: 768px) {
+        margin-top: 20px;
+        position: static;
+        display: flex;
+        justify-content: flex-end;
+      }
     }
+  }
+  .full-name,
+  .nickname,
+  .email,
+  .phone {
+    margin-bottom: 1em;
+  }
 
-    .full-name {
-        width: 100%;
-        box-sizing: border-box;
+  .full-name {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nickname {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .email {
+    width: 65%;
+    padding-right: 10px;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0;
     }
+  }
 
-    .nickname {
-        width: 100%;
-        box-sizing: border-box;
+  .phone {
+    width: 35%;
+    padding-left: 5px;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0;
     }
-
-    .email {
-        width: 65%;
-        padding-right: 10px;
-        box-sizing: border-box;
-
-        @media (max-width: 768px) {
-            width: 100%;
-            padding: 0;
-        }
-    }
-
-    .phone {
-        width: 35%;
-        padding-left: 5px;
-        box-sizing: border-box;
-
-        @media (max-width: 768px) {
-            width: 100%;
-            padding: 0;
-        }
-    }
+  }
 }

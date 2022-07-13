@@ -18,7 +18,7 @@
     />
 
     <div class="button">
-      <Button type="1" msg="Next" :event="verify" />
+      <Button type="0" msg="Next" :event="verify" />
     </div>
   </div>
 </template>

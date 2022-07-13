@@ -1,5 +1,6 @@
 .certificate-container {
   margin-top: 1em;
+  position: relative;
 
   .buttons {
     display: flex;
@@ -11,8 +12,8 @@
     .more-span {
       display: flex;
       flex-flow: column nowrap;
-      align-items: end;
-      justify-content: end;
+      align-items: flex-end;
+      justify-content: flex-end;
       gap: 5px;
       text-align: right;
       width: 45%;
@@ -68,16 +69,22 @@
 }
 
 .finish {
-  margin-top: 10px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  position: absolute;
+  top: 420px;
+  right: 0px;
+  @media(max-width:768px){
+    margin-top: 20px;
+    position: static;
+  }
 }
 
 span {
   font-size: 0.9em;
   color: #ff0000;
   visibility: visible;
-  @media(max-width: 580px){
+  @media (max-width: 580px) {
     font-size: 0.75em;
   }
 }
