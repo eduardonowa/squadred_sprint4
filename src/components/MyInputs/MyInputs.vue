@@ -16,14 +16,14 @@
 
 <script>
 import { mapActions } from "vuex";
-import $ from 'jquery';
-import {} from 'jquery-mask-plugin';
+import $ from "jquery";
+import {} from "jquery-mask-plugin";
 export default {
   name: "MyInputs",
   props: {
     ClassField: {
       type: String,
-      default: "form"
+      default: "form",
     },
     idSpan: String,
     InvalidText: String,
@@ -33,15 +33,26 @@ export default {
     ClassInput: String,
     Placeholder: String,
     idInputs: String,
-    valueInput:String,
+    valueInput: String,
   },
   mounted() {
     if (this.ClassField === "phone") {
-      $(`.${this.ClassField} input`).mask('(00) 00000-0000');
+      $(`.${this.ClassField} input`).mask("(00) 00000-0000");
     }
   },
   methods: {
-    ...mapActions(["setFullname", "setNickname", "setEmail", "setPhone", "setLinkedin", "setGithub", "setCertificates", "setTeamName", "setInstitution", "setGraduation"]),
+    ...mapActions([
+      "setFullname",
+      "setNickname",
+      "setEmail",
+      "setPhone",
+      "setLinkedin",
+      "setGithub",
+      "setCertificate",
+      "setTeamName",
+      "setInstitution",
+      "setGraduation",
+    ]),
 
     getValue(e) {
       if (this.Type === "linkedin") {
@@ -57,15 +68,14 @@ export default {
       } else if (this.ClassField === "phone") {
         this.setPhone(e.target.value);
       } else if (this.ClassField === "certificates") {
-        this.setCertificates(e.target.value);
+        this.setCertificate(e.target.value);
       } else if (this.ClassField === "team-name") {
         this.setTeamName(e.target.value);
       } else if (this.ClassField === "institution") {
         this.setInstitution(e.target.value);
       } else if (this.ClassField === "graduation") {
-        this.setGraduation(e.target.value); 
+        this.setGraduation(e.target.value);
       }
-      
     },
   },
 };

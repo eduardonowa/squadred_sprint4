@@ -12,6 +12,15 @@
   gap: 5px;
 }
 
+#button3 {
+  width: 200px;
+  font-size: 1em;
+  padding: 5px 5px;
+  visibility: hidden;
+  @media(max-width:768px){
+    width: 100%;
+  }
+}
 .img0 {
   width: 7px;
   height: 7px;
@@ -27,7 +36,7 @@
   height: 7px;
 }
 
-.img3{
+.img3 {
   width: 13px;
   height: 10px;
 }

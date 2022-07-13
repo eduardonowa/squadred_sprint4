@@ -17,6 +17,10 @@ export default new Vuex.Store({
     age: "",
     linkedin: "",
     github: "",
+    certificate: "",
+    teamName: "",
+    institution: "",
+    graduation: "",
     day: "",
     month: "",
     year: "",
@@ -88,6 +92,35 @@ export default new Vuex.Store({
     changeActualTab(state, newTab) {
       state.actualTab = newTab;
     },
+    setCertificate(state, certificate) {
+      state.certificate = certificate;
+      window.localStorage.setItem("certificate", certificate);
+      console.log(certificate);
+    },
+    setTeamName(state, teamName) {
+      state.teamName = teamName;
+      if (
+        // eslint-disable-next-line
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+          teamName
+        )
+      ) {
+        window.localStorage.setItem("TeamName", teamName);
+      } else {
+        window.localStorage.setItem("TeamName", "");
+      }
+    },
+    setInstitution(state, institution) {
+      state.institution = institution;
+      window.localStorage.setItem("institution", institution);
+      console.log(institution);
+    },
+    setGraduation(state, graduation) {
+      window.localStorage.setItem("graduation", graduation);
+      state.graduation = graduation;
+      console.log(graduation);
+    },
+
     nextTab(state) {
       if (
         state.menuTabs.indexOf(state.actualTab) + 1 !==
@@ -128,6 +161,19 @@ export default new Vuex.Store({
     nextTab({ commit }) {
       commit("nextTab");
     },
+    setCertificate({ commit }, certificate) {
+      commit("setCertificate", certificate);
+    },
+    setTeamName({ commit }, teamName) {
+      commit("setTeamName", teamName);
+    },
+    setInstitution({ commit }, institution) {
+      commit("setInstitution", institution);
+    },
+    setGraduation({ commit }, graduation) {
+      commit("setGraduation", graduation);
+    },
+
   },
   modules: {},
 });
