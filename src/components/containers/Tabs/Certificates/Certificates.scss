@@ -29,7 +29,7 @@
     }
 
     .certificates {
-      width: 200px;
+      width: 40%;
       text-align: left;
       font-family: "Nunito", sans-serif;
       position: relative;
@@ -44,10 +44,7 @@
         border-bottom-left-radius: 4px;
         color: #ffffff;
         padding: 5px 5px;
-        width: 200px;
-        @media (max-width: 768px) {
-          width: 100%;
-        }
+        width: 100%;
 
         div {
           display: grid;
@@ -105,3 +102,12 @@
 .graduation {
   margin-top: 0.5em;
 }
+span {
+  font-size: 0.9em;
+  color: #ff0000;
+  visibility: visible;
+  @media (max-width: 580px) {
+    font-size: 0.75em;
+  }
+}
+
