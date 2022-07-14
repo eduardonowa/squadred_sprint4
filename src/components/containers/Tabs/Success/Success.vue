@@ -30,11 +30,11 @@
         </p>
       </div>
     </div>
-    <Texts description="TeamName: " :text="this.teamName" id="hide"/>
+    <Texts description="TeamName: " :text="this.teamName" id="hide" />
     <Texts description="Institution: " :text="this.institution" />
     <Texts description="Graduation: " :text="this.graduation" />
     <div class="button">
-      <Button type="1" msg="Return" :event="clearStorage" id="button"/>
+      <Button type="1" msg="Return" :event="clearStorage" />
     </div>
   </div>
 </template>
@@ -67,6 +67,10 @@ export default {
   },
   methods: {
     getData() {
+      let day = localStorage.getItem("day");
+      let month = localStorage.getItem("month");
+      let year = localStorage.getItem("year");
+      this.birthday = `${day}/${month}/${year}`;
       this.fullname = localStorage.getItem("fullname");
       this.email = localStorage.getItem("email");
       this.nickname = localStorage.getItem("nickname");
