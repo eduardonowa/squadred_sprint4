@@ -9,5 +9,9 @@
     margin: 0;
     color: #074ee8;
     font-weight: 700;
+
+    @media (max-width: 1550px){
+      font-size: 2em;
+    }
   }
 }
