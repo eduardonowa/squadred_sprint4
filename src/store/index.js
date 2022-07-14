@@ -105,9 +105,9 @@ export default new Vuex.Store({
           teamName
         )
       ) {
-        window.localStorage.setItem("TeamName", teamName);
+        window.localStorage.setItem("teamName", teamName);
       } else {
-        window.localStorage.setItem("TeamName", "");
+        window.localStorage.setItem("teamName", "");
       }
     },
     setInstitution(state, institution) {

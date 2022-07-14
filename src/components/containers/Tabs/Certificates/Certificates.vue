@@ -65,7 +65,10 @@
       Type="text"
       :valueInput="graduationValue"
     />
-    <Button class="finish" msg="Finish" type="1" :event="validate"></Button>
+    <div class="footer-certificates">
+      <span> {{ spanGeneral }}</span>
+      <Button class="finish" msg="Finish" type="1" :event="validate"></Button>
+    </div>
   </div>
 </template>
 
@@ -88,23 +91,53 @@ export default {
       isOpenCertificates: false,
       spanMsg: "",
       moreButtonAppear: false,
+      spanGeneral: "",
     };
   },
   methods: {
     ...mapActions(["nextTab"]),
     validate() {
+      let fullNameStorage = window.localStorage["fullname"];
+      let emailStorage = window.localStorage["email"];
+      let ageStorage = window.localStorage["age"];
+      let githubStorage = window.localStorage["github"];
+      let teamNameStorage = window.localStorage["teamName"];
+      let institutionStorage = window.localStorage["institution"];
+      let graduationStorage = window.localStorage["graduation"];
+      if (teamNameStorage) {
+        document.getElementById("teamSpan").style.visibility = "hidden";
+      } else {
+        document.getElementById("teamSpan").style.visibility = "visible";
+      }
+      if (institutionStorage) {
+        document.getElementById("institutionSpan").style.visibility = "hidden";
+      } else {
+        document.getElementById("institutionSpan").style.visibility = "visible";
+      }
+      if (graduationStorage) {
+        document.getElementById("graduationSpan").style.visibility = "hidden";
+      } else {
+        document.getElementById("graduationSpan").style.visibility = "visible";
+      }
+
       if (
-        window.localStorage["certificate"] &&
-        window.localStorage["TeamName"] &&
-        window.localStorage["institution"] &&
-        window.localStorage["graduation"]
+        fullNameStorage &&
+        emailStorage &&
+        ageStorage &&
+        githubStorage &&
+        teamNameStorage &&
+        institutionStorage &&
+        graduationStorage
       ) {
         console.log("valid");
         this.$store.state.actualTab = "success";
+        this.nextTab();
+        this.spanGeneral = "";
       } else {
-        console.log("notvalid");
+        this.spanGeneral = "Ops, you miss some field";
       }
     },
+
     openCertificates() {
       this.isOpenCertificates = !this.isOpenCertificates;
     },
@@ -155,7 +188,7 @@ export default {
   mounted() {
     document.title = `${process.env.VUE_APP_TITLE} | Certificates`;
     this.certificatesValue = window.localStorage["certificate"];
-    this.teamnameValue = window.localStorage["TeamName"];
+    this.teamnameValue = window.localStorage["teamName"];
     this.institutionValue = window.localStorage["institution"];
     this.graduationValue = window.localStorage["graduation"];
     this.getCertificatesStorage();
