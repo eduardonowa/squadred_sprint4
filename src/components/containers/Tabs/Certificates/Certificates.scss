@@ -20,7 +20,7 @@
     }
 
     .certificates {
-      width: 200px;
+      width: 40%;
       text-align: left;
       font-family: "Nunito", sans-serif;
       position: relative;
@@ -35,10 +35,7 @@
         border-bottom-left-radius: 4px;
         color: #ffffff;
         padding: 5px 5px;
-        width: 200px;
-        @media (max-width: 768px) {
-          width: 100%;
-        }
+        width: 100%;
 
         div {
           display: grid;
@@ -74,7 +71,7 @@
   position: absolute;
   top: 420px;
   right: 0px;
-  @media(max-width:768px){
+  @media (max-width: 768px) {
     margin-top: 20px;
     position: static;
   }

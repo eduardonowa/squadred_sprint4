@@ -1,0 +1,47 @@
+[1mdiff --git a/src/components/containers/Tabs/Certificates/Certificates.scss b/src/components/containers/Tabs/Certificates/Certificates.scss[m
+[1mindex 6b418cc..522b886 100644[m
+[1m--- a/src/components/containers/Tabs/Certificates/Certificates.scss[m
+[1m+++ b/src/components/containers/Tabs/Certificates/Certificates.scss[m
+[36m@@ -20,7 +20,7 @@[m
+     }[m
+ [m
+     .certificates {[m
+[31m-      width: 200px;[m
+[32m+[m[32m      width: 40%;[m
+       text-align: left;[m
+       font-family: "Nunito", sans-serif;[m
+       position: relative;[m
+[36m@@ -35,10 +35,7 @@[m
+         border-bottom-left-radius: 4px;[m
+         color: #ffffff;[m
+         padding: 5px 5px;[m
+[31m-        width: 200px;[m
+[31m-        @media (max-width: 768px) {[m
+[31m-          width: 100%;[m
+[31m-        }[m
+[32m+[m[32m        width: 100%;[m
+ [m
+         div {[m
+           display: grid;[m
+[36m@@ -74,7 +71,7 @@[m
+   position: absolute;[m
+   top: 420px;[m
+   right: 0px;[m
+[31m-  @media(max-width:768px){[m
+[32m+[m[32m  @media (max-width: 768px) {[m
+     margin-top: 20px;[m
+     position: static;[m
+   }[m
+[1mdiff --git a/src/components/micro/Button/Button.scss b/src/components/micro/Button/Button.scss[m
+[1mindex 38acc13..72f03c9 100644[m
+[1m--- a/src/components/micro/Button/Button.scss[m
+[1m+++ b/src/components/micro/Button/Button.scss[m
+[36m@@ -13,7 +13,7 @@[m
+ }[m
+ [m
+ #button3 {[m
+[31m-  width: 200px;[m
+[32m+[m[32m  width: 100%;[m
+   font-size: 1em;[m
+   padding: 5px 5px;[m
+   visibility: hidden;[m
