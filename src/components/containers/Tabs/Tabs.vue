@@ -3,23 +3,23 @@
     <template v-if="actualTab !== 'success'">
       <h2 class="teamSign">Team Sign Up</h2>
       <MenuComponent />
-  
+
       <template v-if="getActualTab === 'basic'">
         <Basic />
       </template>
-  
+
       <template v-else-if="getActualTab === 'social'">
         <Social />
       </template>
-  
+
       <template v-else-if="getActualTab === 'certificates'">
         <Certificates />
       </template>
-  
+
       <button @click.prevent="nextTab">Next</button>
     </template>
-    
-    <template v-else>
+
+    <template v-else-if="getActualTab === 'success'">
       <Success />
     </template>
   </div>
