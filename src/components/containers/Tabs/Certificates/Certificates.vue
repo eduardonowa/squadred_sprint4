@@ -129,6 +129,8 @@ export default {
         institutionStorage &&
         graduationStorage
       ) {
+        console.log("valid");
+        this.$store.state.actualTab = "success";
         this.nextTab();
         this.spanGeneral = "";
       } else {
