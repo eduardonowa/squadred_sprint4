@@ -95,7 +95,6 @@ export default new Vuex.Store({
     setCertificate(state, certificate) {
       state.certificate = certificate;
       window.localStorage.setItem("certificate", certificate);
-      console.log(certificate);
     },
     setTeamName(state, teamName) {
       state.teamName = teamName;
@@ -113,12 +112,10 @@ export default new Vuex.Store({
     setInstitution(state, institution) {
       state.institution = institution;
       window.localStorage.setItem("institution", institution);
-      console.log(institution);
     },
     setGraduation(state, graduation) {
       window.localStorage.setItem("graduation", graduation);
       state.graduation = graduation;
-      console.log(graduation);
     },
 
     nextTab(state) {

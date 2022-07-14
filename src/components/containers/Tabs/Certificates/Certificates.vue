@@ -129,9 +129,8 @@ export default {
         institutionStorage &&
         graduationStorage
       ) {
-        console.log("valid");
+
         this.$store.state.actualTab = "success";
-        this.nextTab();
         this.spanGeneral = "";
       } else {
         this.spanGeneral = "Ops, you miss some field";
@@ -142,7 +141,6 @@ export default {
       this.isOpenCertificates = !this.isOpenCertificates;
     },
     addCertificates() {
-      console.log(this.certificates.length);
       if (this.$store.state.certificate && this.certificates.length <= 4) {
         this.certificates.push(this.$store.state.certificate);
       } else if (!this.$store.state.certificate) {
