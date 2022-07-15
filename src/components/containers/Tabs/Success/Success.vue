@@ -1,18 +1,23 @@
 <template>
   <div class="success-container">
-    <p>Your data has been sent successfully!</p>
-    <p>Full Name : {{ this.$store.state.fullname }}</p>
-    <p v-if="this.$store.state.nickname">
-      Nickname : {{ this.$store.state.nickname }}
-    </p>
-    <p>Email : {{ this.$store.state.email }}</p>
-    <p v-if="this.$store.state.phone">Phone : {{ this.$store.state.phone }}</p>
-    <p>Birthday : {{ birthday }}</p>
-    <p>Age : {{ this.$store.state.age }}</p>
-    <p v-if="this.$store.state.linkedin">
-      Linkedin : {{ this.$store.state.linkedin }}
-    </p>
-    <p>Github : {{ this.$store.state.github }}</p>
+    <Texts description="Your data has been sent successfully!" />
+    <Texts description="Full Name: " :text="this.fullname" />
+    <Texts
+      v-if="this.nickname"
+      description="Nickname: "
+      :text="this.nickname"
+    />
+    <Texts description="Email: " :text="this.email" />
+    <Texts v-if="this.phone" description="Phone: " :text="this.phone" />
+    <Texts description="Birthday: " :text="this.birthday" />
+    <Texts description="Age: " :text="this.age" />
+    <Texts
+      v-if="this.linkedin"
+      description="Linkedin: "
+      :text="this.linkedin"
+      id="hide"
+    />
+    <Texts description="Github: " :text="this.github" id="hide" />
 
     <div v-if="this.certificates" class="certificates">
       <div class="title">
@@ -25,9 +30,9 @@
         </p>
       </div>
     </div>
-    <p>Team Name : {{ this.$store.state.teamName }}</p>
-    <p>Institution : {{ this.$store.state.institution }}</p>
-    <p>Graduation : {{ this.$store.state.graduation }}</p>
+    <Texts description="TeamName: " :text="this.teamName" id="hide" />
+    <Texts description="Institution: " :text="this.institution" />
+    <Texts description="Graduation: " :text="this.graduation" />
     <div class="button">
       <Button type="1" msg="Return" :event="clearStorage" />
     </div>
@@ -36,26 +41,53 @@
 
 <script>
 import Button from "@/components/micro/Button/Button.vue";
+import Texts from "@/components/micro/Text/Text.vue";
 export default {
   //eslint-disable-next-line
   name: "Success",
   components: {
     Button,
+    Texts,
   },
   data() {
     return {
+      fullname: "",
+      nickname: "",
+      email: "",
+      phone: "",
+      age: "",
+      linkedin: "",
+      github: "",
       birthday: "",
+      teamName: "",
+      institution: "",
+      graduation: "",
       certificates: [],
     };
   },
   methods: {
     getData() {
-      this.birthday = localStorage.getItem("Birthday");
+      let day = localStorage.getItem("day");
+      let month = localStorage.getItem("month");
+      let year = localStorage.getItem("year");
+      this.birthday = `${day}/${month}/${year}`;
+      this.fullname = localStorage.getItem("fullname");
+      this.email = localStorage.getItem("email");
+      this.nickname = localStorage.getItem("nickname");
+      this.phone = localStorage.getItem("phone");
+      this.age = localStorage.getItem("age");
+      this.linkedin = localStorage.getItem("linkedin");
+      this.github = localStorage.getItem("github");
+      this.teamName = localStorage.getItem("teamName");
+      this.institution = localStorage.getItem("institution");
+      this.graduation = localStorage.getItem("graduation");
       this.certificates = JSON.parse(localStorage.getItem("certificates"));
     },
 
     clearStorage() {
       localStorage.clear();
+      this.$store.state.actualTab = "basic";
+      console.log(this.$store.state.actualTab);
     },
   },
   mounted() {

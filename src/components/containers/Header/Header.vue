@@ -17,6 +17,11 @@
         type="forms"
         tabNumber="Third"
       />
+      <Title
+        v-else-if="this.$store.state.actualTab === 'success'"
+        type="forms"
+        tabNumber="Success"
+      />
     </div>
   </div>
 </template>
