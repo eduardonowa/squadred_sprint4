@@ -2,24 +2,17 @@
   <div class="header-container">
     <Description description="Forms" />
     <div class="titles">
-      <Title
-        v-if="this.$store.state.actualTab === 'basic'"
-        type="forms"
-        tabNumber="First"
-      />
+      <Title v-if="this.$store.state.actualTab === 'basic'" tabNumber="First" />
       <Title
         v-else-if="this.$store.state.actualTab === 'social'"
-        type="forms"
         tabNumber="Second"
       />
       <Title
         v-else-if="this.$store.state.actualTab === 'certificates'"
-        type="forms"
         tabNumber="Third"
       />
       <Title
         v-else-if="this.$store.state.actualTab === 'success'"
-        type="forms"
         tabNumber="Success"
       />
     </div>
