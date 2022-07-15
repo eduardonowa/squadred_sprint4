@@ -16,6 +16,9 @@
     padding-top: 0px;
     min-height: 580px;
   }
+  @media ( max-width: 1400px){
+    min-height: 550px;
+  }
   .teamSign {
     padding-top: 45px;
     font-family: "Inter", sans-serif;
@@ -24,6 +27,11 @@
     
     @media (max-width: 1550px){
       padding-top: 20px;
+    }
+    @media (max-width: 1400px){
+      padding-top: 10px;
+      padding-top: 5px;
+      font-size: 1rem;
     }
   }
 }
