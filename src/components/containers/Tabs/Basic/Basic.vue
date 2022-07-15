@@ -75,6 +75,9 @@ export default {
         window.localStorage["email"] &&
         window.localStorage["phone"] &&
         window.localStorage["age"] &&
+        window.localStorage["day"] &&
+        window.localStorage["month"] &&
+        window.localStorage["year"] &&
         JSON.parse(window.localStorage["terms"])
       ) {
         this.nextTab();
@@ -102,6 +105,17 @@ export default {
       } else {
         document.getElementById("chkError").style.visibility = "hidden";
       }
+      if (
+        !window.localStorage["age"] ||
+        !window.localStorage["day"] ||
+        !window.localStorage["month"] ||
+        !window.localStorage["year"]
+      ) {
+        document.getElementById("spanBirthday").style.visibility = "visible";
+      } else {
+        document.getElementById("spanBirthday").style.visibility = "hidden";
+      }
+      console.log(document.getElementById("spanBirthday"));
     },
   },
 };

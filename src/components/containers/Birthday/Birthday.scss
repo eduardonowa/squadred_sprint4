@@ -4,12 +4,17 @@
   .title {
     color: #767676;
     font-size: 1.2em;
+    margin-right: 2em;
   }
   span {
-    font-size: 1.2em;
+    font-size: 1em;
     color: #ff0000;
-    display: none;
+    visibility: hidden;
+    @media (max-width: 580px) {
+      font-size: 0.75em;
+    }
   }
+
   .inputs-container {
     padding-top: 8px;
     display: flex;
