@@ -19,7 +19,7 @@
     />
     <Texts description="Github: " :text="this.github" id="hide" />
 
-    <div v-if="this.certificates" class="certificates">
+    <div v-if="this.isCertificates" class="certificates">
       <div class="title">
         <p>Certificates:</p>
       </div>
@@ -63,6 +63,7 @@ export default {
       institution: "",
       graduation: "",
       certificates: [],
+      isCertificates: false,
     };
   },
   methods: {
@@ -82,6 +83,11 @@ export default {
       this.institution = localStorage.getItem("institution");
       this.graduation = localStorage.getItem("graduation");
       this.certificates = JSON.parse(localStorage.getItem("certificates"));
+      if(this.certificates.length >= 1){
+        this.isCertificates = true
+      } else {
+        this.isCertificates = false
+      }
     },
 
     clearStorage() {
