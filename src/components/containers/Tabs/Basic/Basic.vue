@@ -79,23 +79,28 @@ export default {
       ) {
         this.nextTab();
       } else {
-        ["full-name", "nickname", "email", "phone"].forEach(input => {
+        ["full-name", "nickname", "email", "phone"].forEach((input) => {
           if (input !== "full-name") {
             let error = document.querySelector(`.${input} .ClassSpan`);
             if (!window.localStorage[input]) {
-              error.style.visibility = 'visible';
+              error.style.visibility = "visible";
             } else {
-              error.style.visibility = 'hidden';
+              error.style.visibility = "hidden";
             }
           } else {
             let error = document.querySelector(`.${input} .ClassSpan`);
             if (!window.localStorage["fullname"]) {
-              error.style.visibility = 'visible';
+              error.style.visibility = "visible";
             } else {
-              error.style.visibility = 'hidden';
+              error.style.visibility = "hidden";
             }
           }
         });
+      }
+      if (!JSON.parse(window.localStorage["terms"])) {
+        document.getElementById("chkError").style.visibility = "visible";
+      } else {
+        document.getElementById("chkError").style.visibility = "hidden";
       }
     },
   },

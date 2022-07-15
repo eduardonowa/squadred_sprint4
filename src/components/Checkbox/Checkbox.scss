@@ -63,6 +63,7 @@ input[type="checkbox"] {
   font-family: "Nunito", sans-serif;
   color: red;
   padding-left: 40px;
+  visibility: hidden;
   @media(max-width:768px){
     padding-left: 20px;
     font-size: 0.8em;
