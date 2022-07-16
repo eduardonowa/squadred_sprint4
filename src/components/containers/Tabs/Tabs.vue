@@ -15,8 +15,6 @@
       <template v-else-if="getActualTab === 'certificates'">
         <Certificates />
       </template>
-
-      <button @click.prevent="nextTab">Next</button>
     </template>
 
     <template v-else-if="getActualTab === 'success'">

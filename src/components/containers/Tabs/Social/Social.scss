@@ -1,6 +1,10 @@
 .social-container {
   margin-top: 1em;
   position: relative;
+  .linkedin,
+  .github {
+    margin-bottom: 1em;
+  }
   .button {
     width: 100%;
     height: 100%;
