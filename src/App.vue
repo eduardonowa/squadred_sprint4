@@ -10,6 +10,12 @@
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Nunito&display=swap");
+html,
+body {
+  height: 89vh;
+  flex: 1;
+  background-color: #e5e5e5;
+}
 
 * {
   margin: 0;
