@@ -1,7 +1,7 @@
 <template>
   <div class="basic-container">
     <MyInputs
-      ClassField="full-name"
+      ClassField="fullname"
       Type="text"
       LabelInput="Fullname *"
       InvalidText="Please enter your name"
@@ -12,6 +12,7 @@
       ClassField="nickname"
       Type="text"
       LabelInput="Nickname"
+      InvalidText="Invalid"
       :valueInput="nicknameValue"
       Placeholder="Juanito"
     />
@@ -26,6 +27,7 @@
     <MyInputs
       ClassField="phone"
       LabelInput="Phone"
+      InvalidText="Invalid"
       :valueInput="phoneValue"
       Placeholder="(83) 00000-0000"
       Type="tel"
@@ -71,32 +73,46 @@ export default {
     validate() {
       if (
         window.localStorage["fullname"] &&
-        window.localStorage["nickname"] &&
         window.localStorage["email"] &&
-        window.localStorage["phone"] &&
         window.localStorage["age"] &&
         window.localStorage["day"] &&
         window.localStorage["month"] &&
         window.localStorage["year"] &&
         JSON.parse(window.localStorage["terms"])
       ) {
-        this.nextTab();
+        if (
+          (document.querySelector('.nickname input').value == "" || localStorage['nickname'] != "") &&
+          (document.querySelector('.phone input').value == "" || localStorage['phone'] != "")
+        ) {
+          this.nextTab();
+        } else {
+          ["nickname", "phone"].forEach((input) => {
+            let inpVal = document.querySelector(`.${input} input`).value;
+            let error = document.querySelector(`.${input} .ClassSpan`);
+            if (inpVal !== "" && window.localStorage[input] === "") {
+              error.style.visibility = "visible";
+            } else {
+              error.style.visibility = "hidden";
+            }
+          });
+        }
       } else {
-        ["full-name", "nickname", "email", "phone"].forEach((input) => {
-          if (input !== "full-name") {
-            let error = document.querySelector(`.${input} .ClassSpan`);
-            if (!window.localStorage[input]) {
-              error.style.visibility = "visible";
-            } else {
-              error.style.visibility = "hidden";
-            }
+        ["fullname", "email"].forEach((input) => {
+          let error = document.querySelector(`.${input} .ClassSpan`);
+          if (!window.localStorage[input]) {
+            error.style.visibility = "visible";
           } else {
-            let error = document.querySelector(`.${input} .ClassSpan`);
-            if (!window.localStorage["fullname"]) {
-              error.style.visibility = "visible";
-            } else {
-              error.style.visibility = "hidden";
-            }
+            error.style.visibility = "hidden";
+          }
+        });
+        ["nickname", "phone"].forEach((input) => {
+          let inpVal = document.querySelector(`.${input} input`).value;
+          let error = document.querySelector(`.${input} .ClassSpan`);
+          if (inpVal !== "" && window.localStorage[input] === "") {
+            console.log(inpVal);
+            error.style.visibility = "visible";
+          } else {
+            error.style.visibility = "hidden";
           }
         });
       }

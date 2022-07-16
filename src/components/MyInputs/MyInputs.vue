@@ -59,7 +59,7 @@ export default {
         this.setLinkedin(e.target.value);
       } else if (this.Type === "git") {
         this.setGithub(e.target.value);
-      } else if (this.ClassField === "full-name") {
+      } else if (this.ClassField === "fullname") {
         this.setFullname(e.target.value);
       } else if (this.ClassField === "nickname") {
         this.setNickname(e.target.value);
