@@ -81,8 +81,10 @@ export default {
         JSON.parse(window.localStorage["terms"])
       ) {
         if (
-          (document.querySelector('.nickname input').value == "" || localStorage['nickname'] != "") &&
-          (document.querySelector('.phone input').value == "" || localStorage['phone'] != "")
+          (document.querySelector(".nickname input").value == "" ||
+            localStorage["nickname"] != "") &&
+          (document.querySelector(".phone input").value == "" ||
+            localStorage["phone"] != "")
         ) {
           this.nextTab();
         } else {
@@ -109,7 +111,6 @@ export default {
           let inpVal = document.querySelector(`.${input} input`).value;
           let error = document.querySelector(`.${input} .ClassSpan`);
           if (inpVal !== "" && window.localStorage[input] === "") {
-            console.log(inpVal);
             error.style.visibility = "visible";
           } else {
             error.style.visibility = "hidden";
@@ -131,7 +132,6 @@ export default {
       } else {
         document.getElementById("spanBirthday").style.visibility = "hidden";
       }
-      console.log(document.getElementById("spanBirthday"));
     },
   },
 };
