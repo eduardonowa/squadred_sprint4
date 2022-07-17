@@ -82,7 +82,8 @@
     }
     span {
       position: absolute;
-      bottom: -30px;
+      right: 100px;
+      top: 435px;
       @media (max-width: 768px) {
         position: static;
       }
@@ -114,4 +115,3 @@ span {
     font-size: 0.75em;
   }
 }
-

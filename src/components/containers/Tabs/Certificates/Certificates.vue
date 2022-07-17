@@ -129,7 +129,6 @@ export default {
         institutionStorage &&
         graduationStorage
       ) {
-
         this.$store.state.actualTab = "success";
         this.spanGeneral = "";
       } else {
@@ -143,6 +142,7 @@ export default {
     addCertificates() {
       if (this.$store.state.certificate && this.certificates.length <= 4) {
         this.certificates.push(this.$store.state.certificate);
+        this.spanMsg = "";
       } else if (!this.$store.state.certificate) {
         this.spanMsg = "Empty certificate is not allowed.";
       } else if (this.certificates.length == 5) {
