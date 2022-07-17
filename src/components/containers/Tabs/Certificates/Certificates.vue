@@ -140,7 +140,14 @@ export default {
       this.isOpenCertificates = !this.isOpenCertificates;
     },
     addCertificates() {
-      if (this.$store.state.certificate && this.certificates.length <= 4) {
+      if (
+        this.$store.state.certificate &&
+        this.certificates.length <= 4 &&
+        // eslint-disable-next-line
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+          this.$store.state.certificate
+        )
+      ) {
         this.certificates.push(this.$store.state.certificate);
         this.spanMsg = "";
       } else if (!this.$store.state.certificate) {
@@ -148,6 +155,13 @@ export default {
       } else if (this.certificates.length == 5) {
         this.spanMsg =
           "Sorry, only 5 certificates are allowed. You can remove one certificate instead.";
+      } else if (
+        // eslint-disable-next-line
+        !/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+          this.$store.state.certificate
+        )
+      ) {
+        this.spanMsg = "Invalid certificate.";
       }
     },
 
