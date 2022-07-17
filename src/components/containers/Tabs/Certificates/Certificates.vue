@@ -14,7 +14,7 @@
           type="3"
           class="certificateButton"
           :event="openCertificates"
-        ></Button>
+        />
         <div v-show="isOpenCertificates" class="certificatesList" id="idList">
           <div
             id="listOfCertificates"
@@ -29,12 +29,13 @@
         </div>
       </div>
       <div class="more-span">
+        
         <Button
           msg="More"
           type="2"
           class="moreButton"
           :event="addCertificates"
-        ></Button>
+        />
         <span> {{ spanMsg }} </span>
       </div>
     </div>
@@ -67,7 +68,7 @@
     />
     <div class="footer-certificates">
       <span> {{ spanGeneral }}</span>
-      <Button class="finish" msg="Finish" type="1" :event="validate"></Button>
+      <Button class="finish" msg="Finish" type="1" :event="validate"/>
     </div>
   </div>
 </template>
