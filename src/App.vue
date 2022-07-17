@@ -15,6 +15,9 @@ body {
   height: 89vh;
   flex: 1;
   background-color: #e5e5e5;
+  @media (max-width: 768px) {
+    background-color: white;
+  }
 }
 
 * {
