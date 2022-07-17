@@ -9,12 +9,12 @@
     />
     <div class="buttons">
       <div class="certificates">
-        <Button
+        <Buttons
           msg="Certificate"
           type="3"
           class="certificateButton"
           :event="openCertificates"
-        ></Button>
+        />
         <div v-show="isOpenCertificates" class="certificatesList" id="idList">
           <div
             id="listOfCertificates"
@@ -29,12 +29,12 @@
         </div>
       </div>
       <div class="more-span">
-        <Button
+        <Buttons
           msg="More"
           type="2"
           class="moreButton"
           :event="addCertificates"
-        ></Button>
+        />
         <span> {{ spanMsg }} </span>
       </div>
     </div>
@@ -67,20 +67,20 @@
     />
     <div class="footer-certificates">
       <span> {{ spanGeneral }}</span>
-      <Button class="finish" msg="Finish" type="1" :event="validate"></Button>
+      <Buttons class="finish" msg="Finish" type="1" :event="validate" />
     </div>
   </div>
 </template>
 
 <script>
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
-import Button from "@/components/micro/Button/Button.vue";
+import Buttons from "@/components/micro/Buttons/Buttons.vue";
 import { mapActions } from "vuex";
 
 export default {
   // eslint-disable-next-line
   name: "Certificates",
-  components: { MyInputs, Button },
+  components: { MyInputs, Buttons },
   data() {
     return {
       certificatesValue: "",

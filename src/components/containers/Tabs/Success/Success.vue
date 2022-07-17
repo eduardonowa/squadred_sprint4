@@ -34,19 +34,19 @@
     <Texts description="Institution: " :text="this.institution" />
     <Texts description="Graduation: " :text="this.graduation" />
     <div class="button">
-      <Button type="1" msg="Return" :event="clearStorage" />
+      <Buttons type="1" msg="Return" :event="clearStorage" />
     </div>
   </div>
 </template>
 
 <script>
-import Button from "@/components/micro/Button/Button.vue";
+import Buttons from "@/components/micro/Buttons/Buttons.vue";
 import Texts from "@/components/micro/Text/Text.vue";
 export default {
   //eslint-disable-next-line
   name: "Success",
   components: {
-    Button,
+    Buttons,
     Texts,
   },
   data() {

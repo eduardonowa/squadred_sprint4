@@ -39,7 +39,7 @@
 <script>
 export default {
   // eslint-disable-next-line
-  name: "Button",
+  name: "Buttons",
   props: {
     msg: String,
     type: String,
@@ -52,5 +52,5 @@ export default {
 </script>
 
 <style lang="scss" scooped>
-@import "./Button.scss";
+@import "./Buttons.scss";
 </style>
