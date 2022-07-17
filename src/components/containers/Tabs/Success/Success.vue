@@ -83,7 +83,7 @@ export default {
       this.institution = localStorage.getItem("institution");
       this.graduation = localStorage.getItem("graduation");
       this.certificates = JSON.parse(localStorage.getItem("certificates"));
-      if (this.certificates.length >= 1) {
+      if (this.certificates !== null && this.certificates.length !== 0) {
         this.isCertificates = true;
       } else {
         this.isCertificates = false;
