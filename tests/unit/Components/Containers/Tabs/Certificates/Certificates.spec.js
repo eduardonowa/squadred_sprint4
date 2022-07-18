@@ -1,10 +1,16 @@
 import { mount } from "@vue/test-utils";
 import Certificates from "@/components/containers/Tabs/Certificates/Certificates.vue";
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
-import Buttons from "@/components/micro/Buttons/Buttons.vue"
+import Buttons from "@/components/micro/Buttons/Buttons.vue";
 
 describe("Certificates wrapper", () => {
-  const wrapper = mount(Certificates);
+  const wrapper = mount(Certificates, {
+    mocks: {
+      $store: {
+        state: { certificate: "google.com" },
+      },
+    },
+  });
   test("Have MyInputs component", () => {
     expect(wrapper.findComponent(MyInputs).exists()).toBe(true);
   });
@@ -14,7 +20,7 @@ describe("Certificates wrapper", () => {
   });
 
   test("Have label tag", () => {
-    const label = wrapper.find('label')
-    expect(label.exists()).toBe(true)
+    const label = wrapper.find("label");
+    expect(label.exists()).toBe(true);
   });
 });
