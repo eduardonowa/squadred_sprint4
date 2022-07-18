@@ -34,19 +34,19 @@
     <Texts description="Institution: " :text="this.institution" />
     <Texts description="Graduation: " :text="this.graduation" />
     <div class="button">
-      <Button type="1" msg="Return" :event="clearStorage" />
+      <Buttons type="1" msg="Return" :event="clearStorage" />
     </div>
   </div>
 </template>
 
 <script>
-import Button from "@/components/micro/Button/Button.vue";
+import Buttons from "@/components/micro/Buttons/Buttons.vue";
 import Texts from "@/components/micro/Text/Text.vue";
 export default {
   //eslint-disable-next-line
   name: "Success",
   components: {
-    Button,
+    Buttons,
     Texts,
   },
   data() {
@@ -83,7 +83,7 @@ export default {
       this.institution = localStorage.getItem("institution");
       this.graduation = localStorage.getItem("graduation");
       this.certificates = JSON.parse(localStorage.getItem("certificates"));
-      if (this.certificates.length >= 1) {
+      if (this.certificates !== null && this.certificates.length !== 0) {
         this.isCertificates = true;
       } else {
         this.isCertificates = false;
