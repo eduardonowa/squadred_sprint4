@@ -92,6 +92,7 @@ export default {
 
     clearStorage() {
       localStorage.clear();
+      this.$store.state.abledTabs = ["basic"];
       this.$store.state.actualTab = "basic";
     },
   },
