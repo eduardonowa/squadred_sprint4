@@ -36,7 +36,7 @@
     <div class="footer">
       <Checkbox />
       <div class="button-next">
-        <Button :event="validate" type="0" msg="Next"></Button>
+        <Buttons :event="validate" type="0" msg="Next" />
       </div>
     </div>
   </div>
@@ -46,12 +46,12 @@
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
 import Checkbox from "@/components/Checkbox/Checkbox.vue";
 import Birthday from "@/components/containers/Birthday/Birthday.vue";
-import Button from "@/components/micro/Button/Button.vue";
 import { mapActions } from "vuex";
+import Buttons from "@/components/micro/Buttons/Buttons.vue";
 export default {
   // eslint-disable-next-line
   name: "Basic",
-  components: { MyInputs, Checkbox, Birthday, Button },
+  components: { MyInputs, Checkbox, Birthday, Buttons },
   data() {
     return {
       fullnameValue: "",

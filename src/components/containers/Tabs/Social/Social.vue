@@ -20,21 +20,21 @@
     />
 
     <div class="button">
-      <Button type="0" msg="Next" :event="verify" />
+      <Buttons type="0" msg="Next" :event="verify" />
     </div>
   </div>
 </template>
 
 <script>
 import MyInputs from "@/components/MyInputs/MyInputs.vue";
-import Button from "@/components/micro/Button/Button.vue";
+import Buttons from "@/components/micro/Buttons/Buttons.vue";
 import { mapActions } from "vuex";
 export default {
   // eslint-disable-next-line
   name: "Social",
   components: {
     MyInputs,
-    Button,
+    Buttons,
   },
   data() {
     return {
