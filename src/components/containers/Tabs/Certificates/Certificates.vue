@@ -5,7 +5,7 @@
       ClassField="certificates"
       Placeholder="https://www.linkedin.com/in/foo-bar-3a0560104/"
       Type="text"
-      :valueInput="certificatesValue"
+      :valueInput="getCertificateValue"
     />
     <div class="buttons">
       <div class="certificates">
@@ -151,6 +151,7 @@ export default {
       ) {
         this.certificates.push(this.$store.state.certificate);
         this.spanMsg = "";
+        this.$store.state.certificate = "";
       } else if (!this.$store.state.certificate) {
         this.spanMsg = "Empty certificate is not allowed.";
       } else if (this.certificates.length == 5) {
@@ -197,6 +198,7 @@ export default {
       "certificates",
       JSON.stringify(this.certificates)
     );
+    console.log("updated", this.$store.state.certificate);
   },
   mounted() {
     document.title = `${process.env.VUE_APP_TITLE} | Certificates`;
@@ -206,6 +208,11 @@ export default {
     this.graduationValue = window.localStorage["graduation"];
     this.getCertificatesStorage();
   },
+  computed: {
+    getCertificateValue() {
+      return this.$store.state.certificate;
+    }
+  }
 };
 </script>
 
