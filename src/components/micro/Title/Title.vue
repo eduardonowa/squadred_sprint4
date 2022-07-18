@@ -11,11 +11,6 @@ export default {
   props: {
     tabNumber: String,
   },
-  data() {
-    return {
-      type: "Forms",
-    };
-  },
 };
 </script>
 

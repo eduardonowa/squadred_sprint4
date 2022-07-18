@@ -5,7 +5,7 @@
       ClassField="certificates"
       Placeholder="https://www.linkedin.com/in/foo-bar-3a0560104/"
       Type="text"
-      :valueInput="certificatesValue"
+      :valueInput="getCertificateValue"
     />
     <div class="buttons">
       <div class="certificates">
@@ -14,7 +14,7 @@
           type="3"
           class="certificateButton"
           :event="openCertificates"
-        ></Button>
+        />
         <div v-show="isOpenCertificates" class="certificatesList" id="idList">
           <div
             id="listOfCertificates"
@@ -29,12 +29,13 @@
         </div>
       </div>
       <div class="more-span">
+        
         <Button
           msg="More"
           type="2"
           class="moreButton"
           :event="addCertificates"
-        ></Button>
+        />
         <span> {{ spanMsg }} </span>
       </div>
     </div>
@@ -67,7 +68,7 @@
     />
     <div class="footer-certificates">
       <span> {{ spanGeneral }}</span>
-      <Button class="finish" msg="Finish" type="1" :event="validate"></Button>
+      <Button class="finish" msg="Finish" type="1" :event="validate"/>
     </div>
   </div>
 </template>
@@ -129,7 +130,6 @@ export default {
         institutionStorage &&
         graduationStorage
       ) {
-
         this.$store.state.actualTab = "success";
         this.spanGeneral = "";
       } else {
@@ -141,13 +141,29 @@ export default {
       this.isOpenCertificates = !this.isOpenCertificates;
     },
     addCertificates() {
-      if (this.$store.state.certificate && this.certificates.length <= 4) {
+      if (
+        this.$store.state.certificate &&
+        this.certificates.length <= 4 &&
+        // eslint-disable-next-line
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+          this.$store.state.certificate
+        )
+      ) {
         this.certificates.push(this.$store.state.certificate);
+        this.spanMsg = "";
+        this.$store.state.certificate = "";
       } else if (!this.$store.state.certificate) {
         this.spanMsg = "Empty certificate is not allowed.";
       } else if (this.certificates.length == 5) {
         this.spanMsg =
           "Sorry, only 5 certificates are allowed. You can remove one certificate instead.";
+      } else if (
+        // eslint-disable-next-line
+        !/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+          this.$store.state.certificate
+        )
+      ) {
+        this.spanMsg = "Invalid certificate.";
       }
     },
 
@@ -182,6 +198,7 @@ export default {
       "certificates",
       JSON.stringify(this.certificates)
     );
+    console.log("updated", this.$store.state.certificate);
   },
   mounted() {
     document.title = `${process.env.VUE_APP_TITLE} | Certificates`;
@@ -191,6 +208,11 @@ export default {
     this.graduationValue = window.localStorage["graduation"];
     this.getCertificatesStorage();
   },
+  computed: {
+    getCertificateValue() {
+      return this.$store.state.certificate;
+    }
+  }
 };
 </script>
 

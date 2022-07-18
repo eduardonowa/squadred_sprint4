@@ -29,7 +29,7 @@
       justify-content: flex-end;
       gap: 5px;
       text-align: right;
-      width: 45%;
+      width: 50%;
     }
 
     .certificates {
@@ -82,7 +82,8 @@
     }
     span {
       position: absolute;
-      bottom: -30px;
+      right: 100px;
+      top: 435px;
       @media (max-width: 768px) {
         position: static;
       }
@@ -91,7 +92,7 @@
       display: flex;
       justify-content: flex-end;
       position: absolute;
-      top: 405px;
+      top: 430px;
       right: 0px;
       @media (max-width: 768px) {
         margin-top: 20px;
@@ -114,4 +115,3 @@ span {
     font-size: 0.75em;
   }
 }
-

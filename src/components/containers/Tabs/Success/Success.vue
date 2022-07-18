@@ -83,17 +83,16 @@ export default {
       this.institution = localStorage.getItem("institution");
       this.graduation = localStorage.getItem("graduation");
       this.certificates = JSON.parse(localStorage.getItem("certificates"));
-      if(this.certificates.length >= 1){
-        this.isCertificates = true
+      if (this.certificates.length >= 1) {
+        this.isCertificates = true;
       } else {
-        this.isCertificates = false
+        this.isCertificates = false;
       }
     },
 
     clearStorage() {
       localStorage.clear();
       this.$store.state.actualTab = "basic";
-      console.log(this.$store.state.actualTab);
     },
   },
   mounted() {

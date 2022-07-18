@@ -6,6 +6,7 @@
       Type="linkedin"
       ClassInput="linkedin"
       :valueInput="linkedinValue"
+      ClassField="linkedin"
     />
     <MyInputs
       LabelInput="GitHub *"
@@ -15,6 +16,7 @@
       Type="git"
       ClassInput="git"
       :valueInput="githubValue"
+      ClassField="github"
     />
 
     <div class="button">
